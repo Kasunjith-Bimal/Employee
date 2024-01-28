@@ -20,9 +20,10 @@ project.
 ### Database Setup
 To set up and update the database:
 1. **change connection string in appsettings.json:**
-"ConnectionStrings": {
+
+''' "ConnectionStrings": {
   "DefaultConnection": "Server={{yourDatabaseServer};Database={{database}};Trusted_Connection=True;"
-}
+} '''
 2. **get package manager console for Employee.Infrastructure class library :**
   1. **Add a Migration:**
    dotnet ef migrations add MigrationName
