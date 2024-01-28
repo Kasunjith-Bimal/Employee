@@ -212,5 +212,20 @@ namespace Employee.Domain.Services
                 return null;
             }
         }
+
+        public async Task<List<EmployeeDetail>> GetAllAdminsAsync()
+        {
+            try
+            {
+                this.logger.LogInformation($"[EmployeeService:GetAllAdminsAsync] recieved event");
+                return await _readRepository.GetAllAdminsAsync();
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogDebug($"[EmployeeService:GetAllAdminsAsync] exception occurred: {ex.Message} - Stacktrace: {ex.StackTrace}");
+                return null;
+
+            }
+        }
     }
 }

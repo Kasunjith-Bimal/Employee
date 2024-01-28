@@ -21,7 +21,7 @@ namespace Employee.API.Controllers
             this.logger = logger;
         }
 
-        [HttpPost]
+        [HttpPost("Register")]
         public async Task<IActionResult> RegisterEmployee(RegisterDto register)
         {
             try
@@ -53,7 +53,7 @@ namespace Employee.API.Controllers
             }
             catch (Exception ex)
             {
-                this.logger.LogInformation($"Exception occurred in TaskController:AddTask. Message: {ex.Message} - Exception: {ex.InnerException?.ToString()} - StackTrace: {ex.StackTrace}");
+                this.logger.LogInformation($"Exception occurred in TaskController:RegisterEmployee. Message: {ex.Message} - Exception: {ex.InnerException?.ToString()} - StackTrace: {ex.StackTrace}");
                 return BadRequest(ex);
             }
         }

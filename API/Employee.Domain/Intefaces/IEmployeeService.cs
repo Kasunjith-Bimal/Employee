@@ -20,5 +20,7 @@ namespace Employee.Domain.Intefaces
 
         Task SendEmailAsync(string email, string subject, string message, string fullName);
 
+        Task<List<EmployeeDetail>> GetAllAdminsAsync();
+
     }
 }

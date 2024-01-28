@@ -1,5 +1,8 @@
 ﻿using Employee.API.Extensions;
 using Employee.Application.Command.AuthenticationReleted.Register;
+using Employee.Application.Queries.EmployeeReleted.GetAllAdmin;
+using Employee.Application.Queries.EmployeeReleted.GetAllEmployee;
+using Employee.Application.Queries.EmployeeReleted.GetEmployeeById;
 using MassTransit;
 
 namespace Employee.API.Configuration
@@ -11,7 +14,11 @@ namespace Employee.API.Configuration
                 services.AddMediator(x =>
                 {   // commands
                     x.AddConsumer<RegisterEmployee>();
-                   
+
+                    //queries
+                    x.AddConsumer<GetAllAdmin>();
+                    x.AddConsumer<GetAllEmployee>();
+                    x.AddConsumer<GetEmployeeById>();
                     x.ConfigureMediator((context, cfg) => cfg.UseHttpContextScopeFilter(context));
                 });
 

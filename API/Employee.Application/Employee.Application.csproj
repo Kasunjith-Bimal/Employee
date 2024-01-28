@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Queries\" />
+    <Folder Include="Command\AuthenticationReleted\Login\" />
+    <Folder Include="Command\EmployeeReleted\DeleteEmployee\" />
   </ItemGroup>
 
   <ItemGroup>
