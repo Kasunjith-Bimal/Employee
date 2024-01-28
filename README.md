@@ -37,6 +37,14 @@ To set up and update the database:
    ```
    update database
    ```
+3. **change appsetting json**
+ ```
+ "JWT": {
+  "ValidAudience": "{your base url}",
+  "ValidIssuer": "{your base url}",
+  "Secret": "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM"
+  },
+```
 ### Running the Application
 Execute the following command in the project directory:
 dotnet run
