@@ -41,14 +41,30 @@ namespace Employee.Infrastructure.Persistence.Repository.EmployeeRepository
                 
         }
 
-        public async Task<bool> DeleteEmployee(long employeeId)
+        public async Task<bool> DeleteEmployee(EmployeeDetail employee)
         {
-            throw new NotImplementedException();
+            var result = await _userManager.DeleteAsync(employee);
+            if (result.Succeeded)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public async Task<EmployeeDetail> UpdateEmployee(EmployeeDetail employee)
         {
-            throw new NotImplementedException();
+            var result = await _userManager.UpdateAsync(employee);
+            if (result.Succeeded)
+            {
+                return employee;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

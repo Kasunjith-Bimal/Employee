@@ -13,7 +13,7 @@ namespace Employee.Domain.Intefaces.IEmployeeRepository
     {
         Task<EmployeeDetail> AddEmployee(EmployeeDetail employee, string tempoyryPassword, RoleType roleType);
         Task<EmployeeDetail> UpdateEmployee(EmployeeDetail employee);
-        Task<bool> DeleteEmployee(long employeeId);
+        Task<bool> DeleteEmployee(EmployeeDetail employee);
 
     }
 }

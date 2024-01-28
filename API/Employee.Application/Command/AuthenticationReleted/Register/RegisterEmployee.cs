@@ -30,41 +30,52 @@ namespace Employee.Application.Command.AuthenticationReleted.Register
             try
             {
                 this.logger.LogInformation($"[RegisterEmployee] Received event");
+                this.logger.LogInformation($"[RegisterEmployee] Check Email is Empty");
                 if (!String.IsNullOrEmpty(context.Message.Email))
                 {
-                    var employeeDetails = new EmployeeDetail
-                    {
-                        Address = context.Message.Address,
-                        Email = context.Message.Email,
-                        UserName = context.Message.Email,
-                        Salary = context.Message.Salary,
-                        FullName = context.Message.FirstName + " " + context.Message.LastName,
-                        JoinDate = context.Message.JoinDate,
-                        Telephone = context.Message.Telephone,
-                        PhoneNumber = context.Message.Telephone,
-                        IsFirstLogin = true,
-                    };
+                    this.logger.LogInformation($"[RegisterEmployee] Check Email is exsist");
+                    var checkExistingEmail = await this.employeeService.GetEmployeeByEmailAsync(context.Message.Email);
 
-                    var employee = await this.employeeService.AddEmployee(employeeDetails, context.Message.RoleType);
-
-                    if(employee != null)
+                    if(checkExistingEmail == null)
                     {
-                        var response = new RegisterEmployeeResponse
+                        this.logger.LogInformation($"[RegisterEmployee] Check Email is not exsist");
+                        var employeeDetails = new EmployeeDetail
                         {
-                            Email = employee.Email,
-                            Id = employee.Id
+                            Address = context.Message.Address,
+                            Email = context.Message.Email,
+                            UserName = context.Message.Email,
+                            Salary = context.Message.Salary,
+                            FullName = context.Message.FirstName + " " + context.Message.LastName,
+                            JoinDate = context.Message.JoinDate,
+                            Telephone = context.Message.Telephone,
+                            PhoneNumber = context.Message.Telephone,
+                            IsFirstLogin = true,
                         };
 
-                        this.logger.LogInformation($"[RegisterEmployee] Success fully add employee");
-                        await context.RespondAsync(ResponseWrapper<RegisterEmployeeResponse>.Success("Success fully add employee", response));
+                        var employee = await this.employeeService.AddEmployee(employeeDetails, context.Message.RoleType);
+
+                        if (employee != null)
+                        {
+                            var response = new RegisterEmployeeResponse
+                            {
+                                Email = employee.Email,
+                                Id = employee.Id
+                            };
+
+                            this.logger.LogInformation($"[RegisterEmployee] Success fully add employee");
+                            await context.RespondAsync(ResponseWrapper<RegisterEmployeeResponse>.Success("Success fully add employee", response));
+                        }
+                        else
+                        {
+                            this.logger.LogInformation($"[RegisterEmployee] Fail to add employee");
+                            await context.RespondAsync(ResponseWrapper<RegisterEmployeeResponse>.Fail("Fail to add employee"));
+                        }
                     }
                     else
                     {
-                        this.logger.LogInformation($"[RegisterEmployee] Fail to add employee");
-                        await context.RespondAsync(ResponseWrapper<RegisterEmployeeResponse>.Fail("Fail to add employee"));
+                        this.logger.LogInformation($"[RegisterEmployee] Fail to add employee email alredy existe");
+                        await context.RespondAsync(ResponseWrapper<RegisterEmployeeResponse>.Fail("Fail to add employee email alredy existe"));
                     }
-                
-
                 }
                 else
                 {

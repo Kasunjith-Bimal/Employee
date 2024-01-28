@@ -9,7 +9,12 @@ namespace Employee.Domain.Intefaces.IEmployeeRepository
 {
     public interface IEmployeeReadRepository
     {
-        Task<EmployeeDetail> GetEmployeByIdAsync(long employeeId);
-        Task<List<EmployeeDetail>> GetAlEmployesAsync();
+        Task<EmployeeDetail> GetEmployeByIdAsync(string employeeId);
+
+        Task<EmployeeDetail> GetEmployeByEmailAsync(string employeeEmail);
+
+        Task<List<EmployeeDetail>> GetAllEmployesAsync();
+
+        Task<List<EmployeeDetail>> GetAllAdminsAsync();
     }
 }

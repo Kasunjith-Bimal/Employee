@@ -32,7 +32,7 @@ namespace Employee.Domain.Services
             this._configuration = configuration;
         }
 
-        public async Task<EmployeeDetail> GetEmployeeByIdAsync(long employeeId)
+        public async Task<EmployeeDetail> GetEmployeeByIdAsync(string employeeId)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace Employee.Domain.Services
             try
             {
                 this.logger.LogInformation($"[EmployeeService:GetAllEmployeesAsync] recieved event");
-                return await _readRepository.GetAlEmployesAsync();
+                return await _readRepository.GetAllEmployesAsync();
             }
             catch (Exception ex)
             {
@@ -71,12 +71,13 @@ namespace Employee.Domain.Services
                 this.logger.LogInformation($"[EmployeeService:AddEmployee] recieved event employee email : {employee.Email} tempory password :{generateTemporyPassword}");
                 var employeeDetails =  await _writeRepository.AddEmployee(employee, generateTemporyPassword, roleType);
 
-               
-
                 if (employeeDetails != null)
                 {
                     this.logger.LogInformation($"[EmployeeService:AddEmployee] send email : {employee.Email} to temporypassword : {generateTemporyPassword}");
-                    await this.SendEmailAsync(employeeDetails.Email, "Your temporary password", $"Your temporary password is: {generateTemporyPassword}",employee.FullName);
+                    if (string.IsNullOrEmpty(generateTemporyPassword))
+                    {
+                        await this.SendEmailAsync(employeeDetails.Email, "Your temporary password", $"Your temporary password is: {generateTemporyPassword}", employee.FullName);
+                    }
                     return employeeDetails;
                 }
                 else
@@ -149,16 +150,17 @@ namespace Employee.Domain.Services
 
         }
 
-        public async Task<bool> DeleteEmployee(long employeeId)
+        public async Task<bool> DeleteEmployee(EmployeeDetail employee)
         {
             try
             {
-                this.logger.LogInformation($"[EmployeeService:DeleteEmployee] recieved event employee id: {employeeId}");
-                return await _writeRepository.DeleteEmployee(employeeId);
+
+                this.logger.LogInformation($"[EmployeeService:DeleteEmployee] recieved event employee id: {employee.Id}");
+                return await _writeRepository.DeleteEmployee(employee);
             }
             catch (Exception ex)
             {
-                this.logger.LogDebug($"[EmployeeService:DeleteEmployee] employee id: {employeeId} exception occurred: {ex.Message} - Stacktrace: {ex.StackTrace}");
+                this.logger.LogDebug($"[EmployeeService:DeleteEmployee] employee id: {employee.Id} exception occurred: {ex.Message} - Stacktrace: {ex.StackTrace}");
                 return await Task.FromResult(false);
             }
             
@@ -190,17 +192,25 @@ namespace Employee.Domain.Services
                     this.logger.LogInformation($"[EmployeeService:SendEmailAsync] recieved  email : {email} message :{message}");
                 }
 
-
-
             }
             catch (Exception ex)
             {
                 this.logger.LogDebug($"[EmployeeService:DeleteEmployee] employee email: {email} exception occurred: {ex.Message} - Stacktrace: {ex.StackTrace}");
-
-
             }
-
         }
 
+        public async Task<EmployeeDetail> GetEmployeeByEmailAsync(string email)
+        {
+            try
+            {
+                this.logger.LogInformation($"[EmployeeService:GetEmployeeByEmailAsync] email : {email} recieved event");
+                return await _readRepository.GetEmployeByEmailAsync(email);
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogDebug($"[EmployeeService:GetEmployeeByEmailAsync] email {email} exception occurred: {ex.Message} - Stacktrace: {ex.StackTrace}");
+                return null;
+            }
+        }
     }
 }

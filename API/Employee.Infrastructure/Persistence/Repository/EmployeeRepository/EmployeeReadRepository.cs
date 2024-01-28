@@ -26,14 +26,92 @@ namespace Employee.Infrastructure.Persistence.Repository.EmployeeRepository
             this._roleManager = roleManager;
         }
 
-        public async Task<List<EmployeeDetail>> GetAlEmployesAsync()
+        public async Task<List<EmployeeDetail>> GetAllEmployesAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var employeeList = await this._userManager.GetUsersInRoleAsync("EMPLOYEE");
+
+                if(employeeList != null)
+                {
+                    return (List<EmployeeDetail>)employeeList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
         }
 
-        public async Task<EmployeeDetail> GetEmployeByIdAsync(long employeeId)
+        public async Task<EmployeeDetail> GetEmployeByIdAsync(string employeeId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var employee = await this._userManager.FindByIdAsync(employeeId);
+
+                if (employee != null)
+                {
+                    return employee;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+
+        public async Task<EmployeeDetail> GetEmployeByEmailAsync(string employeeEmail)
+        {
+            try
+            {
+                var employee = await this._userManager.FindByEmailAsync(employeeEmail);
+
+                if (employee != null)
+                {
+                    return employee;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+
+        public async Task<List<EmployeeDetail>> GetAllAdminsAsync()
+        {
+            try
+            {
+                var employeeList = await this._userManager.GetUsersInRoleAsync("ADMIN");
+
+                if (employeeList != null)
+                {
+                    return (List<EmployeeDetail>)employeeList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
         }
     }
 }

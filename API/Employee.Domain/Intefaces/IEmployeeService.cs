@@ -10,11 +10,13 @@ namespace Employee.Domain.Intefaces
 {
     public interface IEmployeeService
     {
-        Task<EmployeeDetail> GetEmployeeByIdAsync(long taskId);
+        Task<EmployeeDetail> GetEmployeeByIdAsync(string employeeId);
+
+        Task<EmployeeDetail> GetEmployeeByEmailAsync(string email);
         Task<List<EmployeeDetail>> GetAllEmployeesAsync();
-        Task<EmployeeDetail> AddEmployee(EmployeeDetail task, RoleType roleType);
-        Task<EmployeeDetail> UpdateEmployee(EmployeeDetail task);
-        Task<bool> DeleteEmployee(long employeId);
+        Task<EmployeeDetail> AddEmployee(EmployeeDetail employee, RoleType roleType);
+        Task<EmployeeDetail> UpdateEmployee(EmployeeDetail employee);
+        Task<bool> DeleteEmployee(EmployeeDetail employee);
 
         Task SendEmailAsync(string email, string subject, string message, string fullName);
 
