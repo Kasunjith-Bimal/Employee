@@ -32,10 +32,11 @@ To set up and update the database:
    add migration {{migrationName}}
    ```
    Replace MigrationName with a descriptive name for your migration.
-  3. **Update the Database:**
+   
+  2. **Update the Database:**
    ```
    update database
- ```
+   ```
 ### Running the Application
 Execute the following command in the project directory:
 dotnet run
