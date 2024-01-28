@@ -45,6 +45,7 @@ namespace Employee.Infrastructure.Persistence.EFCore
                 FullName ="Mirahampe Patisthana Gedara Kasunjith Bimal Lakshitha",
                 Salary =333000,
                 PhoneNumber = "0716063159",
+                IsFirstLogin = true
             };
 
             var hasher = new PasswordHasher<EmployeeDetail>();

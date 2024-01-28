@@ -1,5 +1,7 @@
 
 using Employee.API.Configuration;
+using Employee.API.Middleware;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
@@ -46,10 +48,18 @@ try
             });
     });
 
+    builder.Services.AddHttpContextAccessor();
+
     builder.Services.EmployeeServices(builder.Configuration, builder.Environment);
+    builder.Services.AddMassTransitComponents(builder.Configuration);
     // Add services to the container.
- 
+
     builder.Services.AddControllers();
+
+    builder.Services.Configure<ForwardedHeadersOptions>(options =>
+    {
+        options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    });
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
 
@@ -94,6 +104,10 @@ try
     {
         app.UseSwagger();
         app.UseSwaggerUI();
+    }
+    else
+    {
+        app.UseMiddleware<ExceptionHandlerMiddleware>();
     }
 
     app.UseHttpsRedirection();

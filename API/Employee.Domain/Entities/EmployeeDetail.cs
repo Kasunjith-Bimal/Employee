@@ -14,5 +14,6 @@ namespace Employee.Domain.Entities
         public DateTime JoinDate { get; set; }
         public string Address { get; set; }
         public string Telephone { get; set; }
+        public bool IsFirstLogin { get; set; }
     }
 }

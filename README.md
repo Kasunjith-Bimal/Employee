@@ -29,13 +29,13 @@ To set up and update the database:
 2. **get package manager console for Employee.Infrastructure class library :**
   1. **Add a Migration:**
    ```
-   add migration {{migrationName}}
+   Add-Migration {{migrationName}}
    ```
    Replace MigrationName with a descriptive name for your migration.
    
   2. **Update the Database:**
    ```
-   update database
+   update-database
    ```
 3. **change appsetting json**
  ```

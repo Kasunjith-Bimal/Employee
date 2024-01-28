@@ -1,10 +1,13 @@
 ﻿using Employee.Domain.Entities;
+using Employee.Domain.Intefaces;
+using Employee.Domain.Intefaces.IEmployeeRepository;
+using Employee.Domain.Services;
 using Employee.Infrastructure.Persistence.EFCore;
+using Employee.Infrastructure.Persistence.Repository.EmployeeRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Employee.API.Configuration
@@ -48,6 +51,14 @@ namespace Employee.API.Configuration
                           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
                       };
                   });
+
+
+            //application Serrvice
+            services.AddScoped<IEmployeeService, EmployeeService>();
+
+            //application repository
+            services.AddScoped<IEmployeeReadRepository, EmployeeReadRepository>();
+            services.AddScoped<IEmployeeWriteRepository, EmployeeWriteRepository>();
         }
 
     }

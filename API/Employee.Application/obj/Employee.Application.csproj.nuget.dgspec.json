@@ -1,17 +1,86 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kasunjith Bimal\\Desktop\\Application\\API\\Employee.Application\\Employee.Application.csproj": {}
+    "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Application\\Employee.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kasunjith Bimal\\Desktop\\Application\\API\\Employee.Application\\Employee.Application.csproj": {
+    "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Application\\Employee.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kasunjith Bimal\\Desktop\\Application\\API\\Employee.Application\\Employee.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Application\\Employee.Application.csproj",
         "projectName": "Employee.Application",
-        "projectPath": "C:\\Users\\Kasunjith Bimal\\Desktop\\Application\\API\\Employee.Application\\Employee.Application.csproj",
+        "projectPath": "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Application\\Employee.Application.csproj",
         "packagesPath": "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kasunjith Bimal\\Desktop\\Application\\API\\Employee.Application\\obj\\",
+        "outputPath": "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Kasunjith Bimal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Domain\\Employee.Domain.csproj": {
+                "projectPath": "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Domain\\Employee.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.1.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Domain\\Employee.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Domain\\Employee.Domain.csproj",
+        "projectName": "Employee.Domain",
+        "projectPath": "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Domain\\Employee.Domain.csproj",
+        "packagesPath": "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +112,20 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.29.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

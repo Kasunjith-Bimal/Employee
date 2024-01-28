@@ -10,3 +10,15 @@ C:\Users\Kasunjith Bimal\Desktop\Application\API\Employee.Domain\obj\Debug\net6.
 C:\Users\Kasunjith Bimal\Desktop\Application\API\Employee.Domain\obj\Debug\net6.0\refint\Employee.Domain.dll
 C:\Users\Kasunjith Bimal\Desktop\Application\API\Employee.Domain\obj\Debug\net6.0\Employee.Domain.pdb
 C:\Users\Kasunjith Bimal\Desktop\Application\API\Employee.Domain\obj\Debug\net6.0\ref\Employee.Domain.dll
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\bin\Debug\net6.0\Employee.Domain.deps.json
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\bin\Debug\net6.0\Employee.Domain.dll
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\bin\Debug\net6.0\Employee.Domain.pdb
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\Employee.Domain.csproj.AssemblyReference.cache
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\Employee.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\Employee.Domain.AssemblyInfoInputs.cache
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\Employee.Domain.AssemblyInfo.cs
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\Employee.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\Employee.Domain.dll
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\refint\Employee.Domain.dll
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\Employee.Domain.pdb
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\ref\Employee.Domain.dll

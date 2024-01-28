@@ -49,6 +49,9 @@ namespace Employee.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsFirstLogin")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("JoinDate")
                         .HasColumnType("datetime2");
 
@@ -107,22 +110,23 @@ namespace Employee.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0223b443-2923-4006-afcb-96e0ec43c808",
+                            Id = "cec9dde3-f6bd-4b42-a368-306f428a13bb",
                             AccessFailedCount = 0,
                             Address = "No 212,Walekade,Palugasdamana,Polonnaruwa.",
-                            ConcurrencyStamp = "47ede88e-fa56-45eb-aad1-8b66960c60fc",
+                            ConcurrencyStamp = "f8c402d6-dfc4-4dac-9bfe-a58032d757d0",
                             Email = "kasunysoft@gmail.com",
                             EmailConfirmed = false,
                             FullName = "Mirahampe Patisthana Gedara Kasunjith Bimal Lakshitha",
+                            IsFirstLogin = true,
                             JoinDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LockoutEnabled = false,
                             NormalizedEmail = "KASUNYSOFT@GMAIL.COM",
                             NormalizedUserName = "KASUNYSOFT@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGj0KpfqMsA/+3XNr5EMyx39bBn1j2QjxO6JqTUS/H7zPdY82RV8kCzLKtDhq8+8kg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN1L6CmUMn+FTgYAZwKW38gJapCg3V6AYM5ZE9QpRleINpQFSpMDwRbDF32IYdELMQ==",
                             PhoneNumber = "0716063159",
                             PhoneNumberConfirmed = false,
                             Salary = 333000m,
-                            SecurityStamp = "9b466131-9657-4453-9a7f-564269f257c1",
+                            SecurityStamp = "832e13ca-1b34-4e3e-871c-3d0f7c5c71cc",
                             Telephone = "0716063159",
                             TwoFactorEnabled = false,
                             UserName = "kasunysoft@gmail.com"
@@ -158,15 +162,15 @@ namespace Employee.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "12cadd49-b01a-411d-b747-34cc23ebd84c",
-                            ConcurrencyStamp = "0b5bc486-8d8c-49a4-972a-198b29b690ce",
+                            Id = "0ac8fa22-e66f-4040-89e0-cd247e8844bd",
+                            ConcurrencyStamp = "7ecc74dd-04d6-4ea3-bcab-57d4d67f6cf3",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "93b0a2a4-cfba-461c-b83f-671a0a063fe5",
-                            ConcurrencyStamp = "db568bbb-e233-4666-b3ca-4a9e7532937c",
+                            Id = "92a91703-c67c-4247-b563-8be8c2ef0c79",
+                            ConcurrencyStamp = "a72dae99-5c7a-4ec1-92a3-bc92277ab4cc",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -261,8 +265,8 @@ namespace Employee.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "0223b443-2923-4006-afcb-96e0ec43c808",
-                            RoleId = "12cadd49-b01a-411d-b747-34cc23ebd84c"
+                            UserId = "cec9dde3-f6bd-4b42-a368-306f428a13bb",
+                            RoleId = "0ac8fa22-e66f-4040-89e0-cd247e8844bd"
                         });
                 });
 
