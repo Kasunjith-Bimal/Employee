@@ -21,15 +21,21 @@ project.
 To set up and update the database:
 1. **change connection string in appsettings.json:**
 
-''' "ConnectionStrings": {
-  "DefaultConnection": "Server={{yourDatabaseServer};Database={{database}};Trusted_Connection=True;"
-} '''
+```
+"ConnectionStrings": {
+  "DefaultConnection": "Server={{severName}};Database={{databaseName}};Trusted_Connection=True;"
+},
+```
 2. **get package manager console for Employee.Infrastructure class library :**
   1. **Add a Migration:**
-   dotnet ef migrations add MigrationName
+   ```
+   add migration {{migrationName}}
+   ```
    Replace MigrationName with a descriptive name for your migration.
-  2. **Update the Database:**
-   dotnet ef database update
+  3. **Update the Database:**
+   ```
+   update database
+ ```
 ### Running the Application
 Execute the following command in the project directory:
 dotnet run
