@@ -14,7 +14,7 @@ project.
 - Any other dependencies
 ### Installation
 1. Clone the repository:
- git clone [https://github.com/your-username/your-project-name.git](https://github.com/Kasunjith-Bimal/Employee.git)
+ git clone https://github.com/Kasunjith-Bimal/Employee.git
 2. Navigate to the project directory:
  cd your-project-name
 ### Database Setup
