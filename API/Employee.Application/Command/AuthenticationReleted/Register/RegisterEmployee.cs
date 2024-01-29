@@ -58,8 +58,7 @@ namespace Employee.Application.Command.AuthenticationReleted.Register
                         {
                             var response = new RegisterEmployeeResponse
                             {
-                                Email = employee.Email,
-                                Id = employee.Id
+                                employee = employee
                             };
 
                             this.logger.LogInformation($"[RegisterEmployee] Success fully add employee");

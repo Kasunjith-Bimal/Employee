@@ -1,5 +1,6 @@
 ﻿using Employee.API.Dtos;
 using Employee.Application.Command.AuthenticationReleted.Register;
+using Employee.Application.Queries.EmployeeReleted.GetAllAdmin;
 using Employee.Application.Queries.EmployeeReleted.GetAllEmployee;
 using Employee.Application.Queries.EmployeeReleted.GetEmployeeById;
 using Employee.Application.Wrappers;
@@ -52,7 +53,6 @@ namespace Employee.API.Controllers
                 return BadRequest(ex);
             }
         }
-
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmployeeByid(string id)

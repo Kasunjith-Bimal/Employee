@@ -20,6 +20,7 @@ namespace Employee.API.Configuration
                 options =>
                 {
                     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
                 }
            );
 

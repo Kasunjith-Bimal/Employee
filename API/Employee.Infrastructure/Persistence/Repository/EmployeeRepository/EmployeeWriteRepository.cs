@@ -56,15 +56,24 @@ namespace Employee.Infrastructure.Persistence.Repository.EmployeeRepository
 
         public async Task<EmployeeDetail> UpdateEmployee(EmployeeDetail employee)
         {
-            var result = await _userManager.UpdateAsync(employee);
-            if (result.Succeeded)
+            try
             {
-                return employee;
+                var result = await _userManager.UpdateAsync(employee);
+                if (result.Succeeded)
+                {
+                    return employee;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch (Exception ex)
             {
+
                 return null;
             }
+           
         }
     }
 }
