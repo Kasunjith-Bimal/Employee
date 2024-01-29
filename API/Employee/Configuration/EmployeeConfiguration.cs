@@ -56,7 +56,7 @@ namespace Employee.API.Configuration
 
             //application Serrvice
             services.AddScoped<IEmployeeService, EmployeeService>();
-
+            services.AddScoped<IJwtTokenManager, JwtTokenManager>();
             //application repository
             services.AddScoped<IEmployeeReadRepository, EmployeeReadRepository>();
             services.AddScoped<IEmployeeWriteRepository, EmployeeWriteRepository>();

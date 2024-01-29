@@ -1,7 +1,9 @@
 ﻿using Employee.API.Extensions;
+using Employee.Application.Command.AuthenticationReleted.Login;
 using Employee.Application.Command.AuthenticationReleted.Register;
 using Employee.Application.Command.EmployeeReleted.DeleteEmployee;
 using Employee.Application.Command.EmployeeReleted.UpdateEmployeeByAdmin;
+using Employee.Application.Command.EmployeeReleted.UpdateEmployeeByEmployee;
 using Employee.Application.Queries.EmployeeReleted.GetAllAdmin;
 using Employee.Application.Queries.EmployeeReleted.GetAllEmployee;
 using Employee.Application.Queries.EmployeeReleted.GetEmployeeById;
@@ -18,7 +20,8 @@ namespace Employee.API.Configuration
                     x.AddConsumer<RegisterEmployee>();
                     x.AddConsumer<UpdateEmployeeByAdmin>();
                     x.AddConsumer<DeleteEmployee>();
-
+                    x.AddConsumer<UpdateEmployeeByEmployee>();
+                    x.AddConsumer<LoginEmployee>();
                     //queries
                     x.AddConsumer<GetAllAdmin>();
                     x.AddConsumer<GetAllEmployee>();

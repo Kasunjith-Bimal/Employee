@@ -14,6 +14,8 @@ namespace Employee.Domain.Intefaces
 
         Task<EmployeeDetail> GetEmployeeByEmailAsync(string email);
         Task<List<EmployeeDetail>> GetAllEmployeesAsync();
+
+        Task<IList<string>> GetUserRolesAsync(EmployeeDetail employee);
         Task<EmployeeDetail> AddEmployee(EmployeeDetail employee, RoleType roleType);
         Task<EmployeeDetail> UpdateEmployee(EmployeeDetail employee);
         Task<bool> DeleteEmployee(EmployeeDetail employee);
@@ -21,6 +23,8 @@ namespace Employee.Domain.Intefaces
         Task SendEmailAsync(string email, string subject, string message, string fullName);
 
         Task<List<EmployeeDetail>> GetAllAdminsAsync();
+
+        Task<bool> CheckPasswordAsync(EmployeeDetail employee, string passWord);
 
     }
 }

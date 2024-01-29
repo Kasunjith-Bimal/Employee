@@ -113,5 +113,31 @@ namespace Employee.Infrastructure.Persistence.Repository.EmployeeRepository
                 return null;
             }
         }
+
+        public async Task<bool> CheckPasswordAsync(EmployeeDetail employee, string passWord)
+        {
+            try
+            {
+                return await _userManager.CheckPasswordAsync(employee, passWord);
+            }
+            catch (Exception)
+            {
+
+                return await Task.FromResult(false);
+            }
+        }
+
+        public async Task<IList<string>> GetUserRolesAsync(EmployeeDetail employee)
+        {
+            try
+            {
+                return await _userManager.GetRolesAsync(employee);
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
     }
 }

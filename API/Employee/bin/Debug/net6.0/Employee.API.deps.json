@@ -951,7 +951,8 @@
         "dependencies": {
           "MailKit": "4.3.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.0",
-          "SendGrid": "9.29.1"
+          "SendGrid": "9.29.1",
+          "System.IdentityModel.Tokens.Jwt": "6.10.0"
         },
         "runtime": {
           "Employee.Domain.dll": {}

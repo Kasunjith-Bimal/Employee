@@ -227,5 +227,35 @@ namespace Employee.Domain.Services
 
             }
         }
+
+        public async Task<bool> CheckPasswordAsync(EmployeeDetail employee, string passWord)
+        {
+            try
+            {
+                this.logger.LogInformation($"[EmployeeService:CheckPasswordAsync] recieved event");
+                return await _readRepository.CheckPasswordAsync(employee, passWord);
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogDebug($"[EmployeeService:CheckPasswordAsync] exception occurred: {ex.Message} - Stacktrace: {ex.StackTrace}");
+                return await Task.FromResult(false);
+
+            }
+        }
+
+        public async Task<IList<string>> GetUserRolesAsync(EmployeeDetail employee)
+        {
+            try
+            {
+                return await _readRepository.GetUserRolesAsync(employee);
+            }
+            catch (Exception ex)
+            {
+
+                this.logger.LogDebug($"[EmployeeService:CheckPasswordAsync] exception occurred: {ex.Message} - Stacktrace: {ex.StackTrace}");
+                return null;
+
+            }
+        }
     }
 }

@@ -124,6 +124,10 @@
             "SendGrid": {
               "target": "Package",
               "version": "[9.29.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.8.0, )"
             }
           },
           "imports": [

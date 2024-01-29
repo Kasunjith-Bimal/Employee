@@ -1,9 +1,13 @@
 ﻿using Employee.API.Dtos;
 using Employee.Application.Command.AuthenticationReleted.Register;
+using Employee.Application.Command.EmployeeReleted.UpdateEmployeeByAdmin;
+using Employee.Application.Command.EmployeeReleted.UpdateEmployeeByEmployee;
 using Employee.Application.Queries.EmployeeReleted.GetAllAdmin;
 using Employee.Application.Queries.EmployeeReleted.GetAllEmployee;
 using Employee.Application.Queries.EmployeeReleted.GetEmployeeById;
 using Employee.Application.Wrappers;
+using Employee.Domain.Dto;
+using Employee.Domain.Entities;
 using MassTransit.Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -80,6 +84,41 @@ namespace Employee.API.Controllers
             catch (Exception ex)
             {
                 this.logger.LogInformation($"Exception occurred in EmployeController:GetAllEmployee. Message: {ex.Message} - Exception: {ex.InnerException?.ToString()} - StackTrace: {ex.StackTrace}");
+                return BadRequest(ex);
+            }
+        }
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEmployee(string id, EmployeeUpdate employee)
+        {
+            try
+            {
+                //if (id != task.Id)
+                //    return BadRequest();
+
+                var client = this.mediator.CreateRequestClient<UpdateEmployeeByEmployeeCommand>();
+                var response = await client.GetResponse<ResponseWrapper<UpdateEmployeeByEmployeeResponse>>(new UpdateEmployeeByEmployeeCommand
+                {
+                    employee = employee,
+                    Id = id
+                });
+
+                if (response.Message.Succeeded)
+                {
+                    this.logger.LogInformation($"Event succeeded in TaskController:UpdateEmployee");
+                    return Ok(response.Message);
+                }
+                else
+                {
+                    this.logger.LogInformation($"Event not succeeded in TaskController:UpdateEmployee. Message: {response.Message.Message}");
+                    return BadRequest(response.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                this.logger.LogInformation($"Exception occurred in TaskController:UpdateEmployee. Message: {ex.Message} - Exception: {ex.InnerException?.ToString()} - StackTrace: {ex.StackTrace}");
                 return BadRequest(ex);
             }
         }

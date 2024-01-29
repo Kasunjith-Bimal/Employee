@@ -19,5 +19,7 @@ namespace Employee.Application.Command.AuthenticationReleted.Register
         public string Telephone { get; set; }
         public RoleType RoleType { get; set; }
 
+     
+
     }
 }

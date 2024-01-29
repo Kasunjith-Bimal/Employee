@@ -1,4 +1,5 @@
 ﻿using Employee.API.Dtos;
+using Employee.Application.Command.AuthenticationReleted.Login;
 using Employee.Application.Command.AuthenticationReleted.Register;
 using Employee.Application.Wrappers;
 using Employee.Domain.Enum;
@@ -44,6 +45,39 @@ namespace Employee.API.Controllers
                     this.logger.LogInformation($"Event succeeded in AuthenticationController:RegisterEmployee");
                     return Ok(response.Message);
                    // return CreatedAtAction(nameof(GetTaskById), new { id = response.Message.Payload.task.Id }, response.Message);
+                }
+                else
+                {
+                    this.logger.LogInformation($"Event not succeeded in AuthenticationController:RegisterEmployee. Message: {response.Message.Message}");
+                    return BadRequest(response.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogInformation($"Exception occurred in TaskController:RegisterEmployee. Message: {ex.Message} - Exception: {ex.InnerException?.ToString()} - StackTrace: {ex.StackTrace}");
+                return BadRequest(ex);
+            }
+        }
+
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> LoginEmployee(LoginDto login)
+        {
+            try
+            {
+                var client = this.mediator.CreateRequestClient<LoginEmployeeCommand>();
+                var response = await client.GetResponse<ResponseWrapper<LoginEmployeeResponse>>(new LoginEmployeeCommand
+                {
+                    Email = login.Email,
+                    Password = login.Password
+                });
+                
+
+                if (response.Message.Succeeded)
+                {
+                    this.logger.LogInformation($"Event succeeded in AuthenticationController:RegisterEmployee");
+                    return Ok(response.Message);
+                    // return CreatedAtAction(nameof(GetTaskById), new { id = response.Message.Payload.task.Id }, response.Message);
                 }
                 else
                 {

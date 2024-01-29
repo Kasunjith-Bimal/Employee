@@ -16,5 +16,10 @@ namespace Employee.Domain.Intefaces.IEmployeeRepository
         Task<List<EmployeeDetail>> GetAllEmployesAsync();
 
         Task<List<EmployeeDetail>> GetAllAdminsAsync();
+
+        Task<IList<string>> GetUserRolesAsync(EmployeeDetail employee);
+
+
+        Task<bool> CheckPasswordAsync(EmployeeDetail employee ,string passWord);
     }
 }

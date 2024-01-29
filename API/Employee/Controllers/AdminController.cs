@@ -1,4 +1,5 @@
-﻿using Employee.Application.Command.EmployeeReleted.UpdateEmployeeByAdmin;
+﻿using Employee.Application.Command.EmployeeReleted.DeleteEmployee;
+using Employee.Application.Command.EmployeeReleted.UpdateEmployeeByAdmin;
 using Employee.Application.Queries.EmployeeReleted.GetAllAdmin;
 using Employee.Application.Queries.EmployeeReleted.GetAllEmployee;
 using Employee.Application.Queries.EmployeeReleted.GetEmployeeById;
@@ -84,7 +85,7 @@ namespace Employee.API.Controllers
             }
         }
 
-        [HttpPut("employee/{id}")]
+        [HttpPut("employee/{id}/edit")]
         public async Task<IActionResult> UpdateEmployee(string id, EmployeeDetail employee)
         {
             try
@@ -101,21 +102,54 @@ namespace Employee.API.Controllers
 
                 if (response.Message.Succeeded)
                 {
-                    this.logger.LogInformation($"Event succeeded in TaskController:UpdateTask");
+                    this.logger.LogInformation($"Event succeeded in AdminController:UpdateEmployee");
                     return Ok(response.Message);
                 }
                 else
                 {
-                    this.logger.LogInformation($"Event not succeeded in TaskController:UpdateTask. Message: {response.Message.Message}");
+                    this.logger.LogInformation($"Event not succeeded in AdminController:UpdateEmployee. Message: {response.Message.Message}");
                     return BadRequest(response.Message);
                 }
             }
             catch (Exception ex)
             {
 
-                this.logger.LogInformation($"Exception occurred in TaskController:UpdateTask. Message: {ex.Message} - Exception: {ex.InnerException?.ToString()} - StackTrace: {ex.StackTrace}");
+                this.logger.LogInformation($"Exception occurred in AdminController:UpdateEmployee. Message: {ex.Message} - Exception: {ex.InnerException?.ToString()} - StackTrace: {ex.StackTrace}");
                 return BadRequest(ex);
             }
         }
+
+        [HttpDelete("employee/{id}/delete")]
+        public async Task<ActionResult> DeleteEmployee(string id)
+        {
+            try
+            {
+                var client = this.mediator.CreateRequestClient<DeleteEmployeeCommand>();
+                var response = await client.GetResponse<ResponseWrapper<DeleteEmployeeResponse>>(new DeleteEmployeeCommand
+                {
+                    Id = id
+                });
+
+                if (response.Message.Succeeded)
+                {
+                    this.logger.LogInformation($"Event succeeded in AdminController:DeleteEmployee");
+                    return Ok(response.Message);
+                }
+                else
+                {
+                    this.logger.LogInformation($"Event not succeeded in AdminController:DeleteEmployee. Message: {response.Message.Message}");
+                    return NotFound(response.Message);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                this.logger.LogInformation($"Exception occurred in AdminController:UpdateTask. Message: {ex.Message} - Exception: {ex.InnerException?.ToString()} - StackTrace: {ex.StackTrace}");
+                return BadRequest(ex);
+            }
+        }
+
+
     }
 }
