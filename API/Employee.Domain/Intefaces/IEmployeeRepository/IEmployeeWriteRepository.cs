@@ -15,5 +15,7 @@ namespace Employee.Domain.Intefaces.IEmployeeRepository
         Task<EmployeeDetail> UpdateEmployee(EmployeeDetail employee);
         Task<bool> DeleteEmployee(EmployeeDetail employee);
 
+        Task<bool> ChangePasswordAsync(EmployeeDetail employee, string oldPassword, string NewPassword);
+
     }
 }

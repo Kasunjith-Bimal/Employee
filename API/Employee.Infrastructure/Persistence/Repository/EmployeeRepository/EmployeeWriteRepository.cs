@@ -41,6 +41,27 @@ namespace Employee.Infrastructure.Persistence.Repository.EmployeeRepository
                 
         }
 
+        public async Task<bool> ChangePasswordAsync(EmployeeDetail employee, string oldPassword, string NewPassword)
+        {
+            try
+            {
+                var changePasswordResult = await _userManager.ChangePasswordAsync(employee, oldPassword, NewPassword);
+                if (changePasswordResult.Succeeded)
+                {
+                    return await Task.FromResult(true);
+                }
+                else
+                {
+                    return await Task.FromResult(false);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return await Task.FromResult(false);
+            }
+        }
+
         public async Task<bool> DeleteEmployee(EmployeeDetail employee)
         {
             var result = await _userManager.DeleteAsync(employee);

@@ -1,4 +1,5 @@
 ﻿using Employee.API.Dtos;
+using Employee.Application.Command.AuthenticationReleted.ChangePassword;
 using Employee.Application.Command.AuthenticationReleted.Login;
 using Employee.Application.Command.AuthenticationReleted.Register;
 using Employee.Application.Wrappers;
@@ -88,6 +89,39 @@ namespace Employee.API.Controllers
             catch (Exception ex)
             {
                 this.logger.LogInformation($"Exception occurred in TaskController:RegisterEmployee. Message: {ex.Message} - Exception: {ex.InnerException?.ToString()} - StackTrace: {ex.StackTrace}");
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpPost("ChangePassword")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordDto changePasswordDto)
+        {
+            try
+            {
+                var client = this.mediator.CreateRequestClient<ChangePasswordCommand>();
+                var response = await client.GetResponse<ResponseWrapper<ChangePasswordResponse>>(new ChangePasswordCommand
+                {
+                    Email = changePasswordDto.Email,
+                    OldPassword = changePasswordDto.OldPassword,
+                    NewPassword = changePasswordDto.NewPassword
+                });
+
+
+                if (response.Message.Succeeded)
+                {
+                    this.logger.LogInformation($"Event succeeded in AuthenticationController:ChangePassword");
+                    return Ok(response.Message);
+                    // return CreatedAtAction(nameof(GetTaskById), new { id = response.Message.Payload.task.Id }, response.Message);
+                }
+                else
+                {
+                    this.logger.LogInformation($"Event not succeeded in AuthenticationController:ChangePassword. Message: {response.Message.Message}");
+                    return BadRequest(response.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogInformation($"Exception occurred in TaskController:ChangePassword. Message: {ex.Message} - Exception: {ex.InnerException?.ToString()} - StackTrace: {ex.StackTrace}");
                 return BadRequest(ex);
             }
         }

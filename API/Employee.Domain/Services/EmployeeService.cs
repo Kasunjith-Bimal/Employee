@@ -257,5 +257,20 @@ namespace Employee.Domain.Services
 
             }
         }
+
+        public async Task<bool> ChangePasswordAsync(EmployeeDetail employee, string oldPassword, string NewPassword)
+        {
+            try
+            {
+                return await _writeRepository.ChangePasswordAsync(employee,oldPassword,NewPassword);
+            }
+            catch (Exception ex)
+            {
+
+                this.logger.LogDebug($"[EmployeeService:CheckPasswordAsync] exception occurred: {ex.Message} - Stacktrace: {ex.StackTrace}");
+                return await Task.FromResult(false);
+
+            }
+        }
     }
 }

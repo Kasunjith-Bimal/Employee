@@ -1,4 +1,5 @@
 ﻿using Employee.API.Extensions;
+using Employee.Application.Command.AuthenticationReleted.ChangePassword;
 using Employee.Application.Command.AuthenticationReleted.Login;
 using Employee.Application.Command.AuthenticationReleted.Register;
 using Employee.Application.Command.EmployeeReleted.DeleteEmployee;
@@ -22,6 +23,7 @@ namespace Employee.API.Configuration
                     x.AddConsumer<DeleteEmployee>();
                     x.AddConsumer<UpdateEmployeeByEmployee>();
                     x.AddConsumer<LoginEmployee>();
+                    x.AddConsumer<ChangePassword>();
                     //queries
                     x.AddConsumer<GetAllAdmin>();
                     x.AddConsumer<GetAllEmployee>();

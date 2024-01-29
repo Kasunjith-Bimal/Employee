@@ -26,5 +26,7 @@ namespace Employee.Domain.Intefaces
 
         Task<bool> CheckPasswordAsync(EmployeeDetail employee, string passWord);
 
+        Task<bool> ChangePasswordAsync(EmployeeDetail employee, string oldPassword, string NewPassword);
+
     }
 }
