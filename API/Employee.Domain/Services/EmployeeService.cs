@@ -74,7 +74,7 @@ namespace Employee.Domain.Services
                 if (employeeDetails != null)
                 {
                     this.logger.LogInformation($"[EmployeeService:AddEmployee] send email : {employee.Email} to temporypassword : {generateTemporyPassword}");
-                    if (string.IsNullOrEmpty(generateTemporyPassword))
+                    if (!string.IsNullOrEmpty(generateTemporyPassword))
                     {
                         await this.SendEmailAsync(employeeDetails.Email, "Your temporary password", $"Your temporary password is: {generateTemporyPassword}", employee.FullName);
                     }

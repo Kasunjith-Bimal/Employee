@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IKiqm2jml4JupfRlLgR5hjRLwqYo6Cl4b0oh8lYA3lCzoSc5JeYkNwQixxvAeW2ydo440qN6CYyJT9Tt81xA9A==",
+  "dgSpecHash": "lVtiRijQe+mkclERvI7fwwzJUV3HGOSXmcaxbDS7F1DGRjJ8nq1fs6NGxzbubymwQOEkDwWTwpsZIotkjZ/GgA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Application\\Employee.Application.csproj",
   "expectedPackageFiles": [
@@ -50,7 +50,10 @@
     "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\system.text.encoding.codepages\\7.0.0\\system.text.encoding.codepages.7.0.0.nupkg.sha512",
     "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\system.text.json\\6.0.8\\system.text.json.6.0.8.nupkg.sha512",
-    "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
+    "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
+    "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512"
   ],
   "logs": []
 }

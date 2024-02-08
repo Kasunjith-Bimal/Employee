@@ -89,7 +89,7 @@ namespace Employee.API.Controllers
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}/edit")]
         public async Task<IActionResult> UpdateEmployee(string id, EmployeeUpdate employee)
         {
             try

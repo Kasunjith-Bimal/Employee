@@ -32,3 +32,4 @@ C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Infrastructure\o
 C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Infrastructure\obj\Debug\net6.0\Employee.Infrastructure.pdb
 C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Infrastructure\obj\Debug\net6.0\Employee.Infrastructure.genruntimeconfig.cache
 C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Infrastructure\obj\Debug\net6.0\ref\Employee.Infrastructure.dll
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Infrastructure\obj\Debug\net6.0\Employee.Infrastructure.sourcelink.json

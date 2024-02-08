@@ -52,11 +52,14 @@ namespace Employee.Application.Command.AuthenticationReleted.Login
                                 {
                                     var response = new LoginEmployeeResponse
                                     {
-                                        AccessToken = generateAccesstokenDetails.Item1,
-                                        Email = checkExistingEmployee.Email,
-                                        Expire = generateAccesstokenDetails.Item2,
-                                        FullName = checkExistingEmployee.FullName,
-                                        IsFirstLogin = checkExistingEmployee.IsFirstLogin
+                                       TokenDetail = new LoginEmployeeTokenResponse
+                                       {
+                                           AccessToken = generateAccesstokenDetails.Item1,
+                                           Expire = generateAccesstokenDetails.Item2,
+                                       },
+                                       Email = checkExistingEmployee.Email,
+                                       FullName = checkExistingEmployee.FullName,
+                                       IsFirstLogin = checkExistingEmployee.IsFirstLogin
 
                                     };
 

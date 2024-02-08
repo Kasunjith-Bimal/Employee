@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VnaOz2erRyYgAz3e4Ce3+f3Rpj/VUyfyjQ30eMhdVJ6WQIAK0OGMMETD4oWo3Gorb+kfZQTKpWlC/cIJAVxb1w==",
+  "dgSpecHash": "99xzgu0law8erfYvpCOOrJd6MXaTT/kqN92C4uwCu/9CbpXt7cz6Swq4NxpIW02qJ8G4dBSRxxII8GMm8ypwAQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kasunjith Bimal\\Desktop\\Employee\\Employee\\API\\Employee.Infrastructure\\Employee.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -59,7 +59,10 @@
     "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\system.text.encoding.codepages\\7.0.0\\system.text.encoding.codepages.7.0.0.nupkg.sha512",
-    "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\Kasunjith Bimal\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512"
   ],
   "logs": []
 }

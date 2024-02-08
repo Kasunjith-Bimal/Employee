@@ -207,3 +207,4 @@ C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee\obj\Debug\net6.0
 C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee\obj\Debug\net6.0\Employee.API.pdb
 C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee\obj\Debug\net6.0\Employee.API.genruntimeconfig.cache
 C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee\obj\Debug\net6.0\ref\Employee.API.dll
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee\obj\Debug\net6.0\Employee.API.sourcelink.json

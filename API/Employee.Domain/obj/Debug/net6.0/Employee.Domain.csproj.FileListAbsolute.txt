@@ -22,3 +22,4 @@ C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug
 C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\refint\Employee.Domain.dll
 C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\Employee.Domain.pdb
 C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\ref\Employee.Domain.dll
+C:\Users\Kasunjith Bimal\Desktop\Employee\Employee\API\Employee.Domain\obj\Debug\net6.0\Employee.Domain.sourcelink.json

@@ -12,15 +12,18 @@ namespace Employee.Application.Command.AuthenticationReleted.Login
     public class LoginEmployeeResponse
     {
         public string Email { get; set; }
-
         public string FullName { get; set; }
+        public bool IsFirstLogin { get; set; }
+        public LoginEmployeeTokenResponse TokenDetail { get; set; }
 
+     
+
+    }
+
+
+    public class LoginEmployeeTokenResponse
+    {
         public string AccessToken { get; set; }
-
-
         public DateTime Expire { get; set; }
-
-        public bool IsFirstLogin {get;set;}
-
     }
 }
