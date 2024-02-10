@@ -1,13 +1,14 @@
 import { RoleType } from "./RoleType"
 
 export interface Employee {
-    Id: string
-    Email: string,
-    FirstName: string,
-    LastName: string,
-    Salary: number,
-    JoinDate: Date,
-    Address: string,
-    Telephone: string,
-    RoleType: RoleType
+    id: string
+    email: string,
+    firstName: string,
+    lastName: string,
+    fullName: string,
+    salary: number,
+    joinDate: Date,
+    address: string,
+    telephone: string,
+    roleType: RoleType
   }

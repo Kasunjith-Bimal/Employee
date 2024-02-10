@@ -1,1 +1,15 @@
-<p>admin-list works!</p>
+<app-loader *ngIf="isLoading"></app-loader>
+<div class="container-fluid">
+    <div class="row mb-4 mt-4"> <!-- Add some bottom margin -->
+        <div class="col-3">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search..." aria-label="Search" [(ngModel)]="searchText">
+          </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="items">
+      <div class="col-12 col-md-6 col-lg-4" *ngFor="let item of items  | search: searchText">
+        <app-admin-list-item [item]="item" (delete)="deleteItem(item.id)"></app-admin-list-item>
+      </div>
+    </div>
+</div>

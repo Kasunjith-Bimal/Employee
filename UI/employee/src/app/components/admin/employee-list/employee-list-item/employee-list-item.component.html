@@ -1,1 +1,21 @@
-<p>employee-list-item works!</p>
+<div class="card mb-3 custom-card-spacing" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="assets/images/useravater.png" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <!-- Your item details here -->
+          <h5 class="card-title"> Employee</h5>
+          Name :  <h5 class="card-title"> {{ item.fullName }}</h5>
+          Email : <p class="card-text"> {{ item.email }}</p>
+          Address : <p class="card-text"> {{ item.address }}</p>
+          JoinDate : <p class="card-text"> {{ item.joinDate | date:'medium' }}</p> 
+          Salary : <p class="card-text">{{ item.salary }}</p> 
+          <!-- Add more details as needed -->
+          <button class="btn btn-danger" (click)="onDelete(item.id)">Delete</button>
+        </div>
+    </div>
+  </div>
+</div>
+  

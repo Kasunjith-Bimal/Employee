@@ -1,4 +1,4 @@
-<div class="login-page">
+<div class="login-page" *ngIf="loadingForm">
     <div class="sidebar">
         <!-- Place your logos and images here -->
         <img src="assets/images/EmployeeNew.png" alt="Logo" class="logo">
@@ -24,6 +24,8 @@
             </div>
 
             <button type="submit" [disabled]="!loginForm.valid">Login</button>
+            
+            <a routerLink="/authorize/changepassword">Change Password</a> 
             <div *ngIf="isErrorShowing" >
                 <small class="text-danger">{{errorMessage}}</small>
             </div>

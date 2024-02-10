@@ -11,17 +11,17 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
    getAllEmployee(){
-    const url = `${environment.baseUrl}api/Employee}`;
+    const url = `${environment.baseUrl}api/Employe`;
     return this.http.get(url);
    }
 
    getEmployeeById(employeeId: string){
-    const url = `${environment.baseUrl}api/Employee/${employeeId}}`;
+    const url = `${environment.baseUrl}api/Employe/${employeeId}}`;
     return this.http.get(url);
    }
 
    updateEmployee(Employee:Employee){
-    const url = `${environment.baseUrl}api/Employee/${Employee.Id}/edit}`;
+    const url = `${environment.baseUrl}api/Employe/${Employee.id}/edit}`;
     return this.http.put(url,Employee);
    }
 }

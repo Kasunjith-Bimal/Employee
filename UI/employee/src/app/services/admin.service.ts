@@ -11,7 +11,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
    getAllAdmins(){
-    const url = `${environment.baseUrl}api/Admin}`;
+    const url = `${environment.baseUrl}api/Admin`;
     return this.http.get(url);
    }
 
@@ -27,7 +27,7 @@ export class AdminService {
 
 
    updateEmployeeByAdmin(employee: Employee){
-    const url = `${environment.baseUrl}api/Admin/Employee/${employee.Id}/edit}`;
+    const url = `${environment.baseUrl}api/Admin/Employee/${employee.id}/edit}`;
     return this.http.put(url,employee);
    }
 }

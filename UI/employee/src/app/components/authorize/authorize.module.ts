@@ -7,12 +7,20 @@ import { RegisterComponent } from './register/register.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 
 import { BrowserModule } from '@angular/platform-browser';
+import { AuthGuard } from 'src/app/authGuard/authGuard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'changepassword', component: ChangePasswordComponent },
+  { 
+    path: 'register', 
+    component: RegisterComponent, 
+     canActivate: [AuthGuard],
+     data: { roles: ['Admin'] } },
+  { 
+    path: 'changepassword', 
+    component: ChangePasswordComponent,
+  },
 ];
 
 

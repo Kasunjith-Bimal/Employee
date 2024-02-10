@@ -45,7 +45,7 @@ namespace Employee.Application.Command.AuthenticationReleted.Register
                             Email = context.Message.Email,
                             UserName = context.Message.Email,
                             Salary = context.Message.Salary,
-                            FullName = context.Message.FirstName + " " + context.Message.LastName,
+                            FullName = context.Message.FullName,
                             JoinDate = context.Message.JoinDate,
                             Telephone = context.Message.Telephone,
                             PhoneNumber = context.Message.Telephone,

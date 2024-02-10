@@ -34,8 +34,7 @@ namespace Employee.API.Controllers
                     Address = String.IsNullOrEmpty(register.Address) ? "" : register.Address,
                     Email = String.IsNullOrEmpty(register.Email) ? "" : register.Email,
                     RoleType = register.RoleType,
-                    FirstName = String.IsNullOrEmpty(register.FirstName) ? "" : register.FirstName,
-                    LastName = String.IsNullOrEmpty(register.LastName) ? "" : register.LastName,
+                    FullName = String.IsNullOrEmpty(register.FullName) ? "" : register.FullName,
                     JoinDate = register.JoinDate,
                     Salary = register.Salary,
                     Telephone = register.Telephone,
@@ -93,7 +92,7 @@ namespace Employee.API.Controllers
             }
         }
 
-        [HttpPost("ChangePassword")]
+        [HttpPut("ChangePassword")]
         public async Task<IActionResult> ChangePassword(ChangePasswordDto changePasswordDto)
         {
             try

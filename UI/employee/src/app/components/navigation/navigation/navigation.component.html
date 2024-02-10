@@ -1,0 +1,42 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Employee App</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
+      <li class="nav-item" *ngIf="!isLoggedIn"><a class="nav-link" routerLink="/login">Login</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" routerLink="/dashboard">Dashboard</a></li>
+    </ul>
+    <span class="navbar-text" *ngIf="isLoggedIn && currentLogUser">
+      {{currentLogUser.FullName}} ({{currentLogUser.Email}})
+      <button class="btn btn-outline-info" (click)="logout()">Logout</button>
+    </span>
+  </div>
+</nav> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Employee App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn && role=='Admin'"><a class="nav-link"  routerLinkActive="active"  [class.activeLink]="activeLink === 'admin/admins'" (click)="setActiveLink('admin/admins')">Admin List</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn && role=='Admin'"><a class="nav-link"   routerLinkActive="active" [class.activeLink]="activeLink === 'admin/employees'" (click)="setActiveLink('admin/employees')">Employee List</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn && role=='Employee'"><a class="nav-link"   routerLinkActive="active" [class.activeLink]="activeLink === 'employee/employeeDetail'" (click)="setActiveLink('employee/employeeDetail')">Employee Detail</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link"  routerLinkActive="active" [class.activeLink]="activeLink === 'authorize/changepassword'"  (click)="setActiveLink('authorize/changepassword')">Change Password</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn && role=='Admin'"><a class="nav-link"  routerLinkActive="active" [class.activeLink]="activeLink === 'authorize/register'"  (click)="setActiveLink('authorize/register')">Register</a></li>
+    </ul>
+    <div class="ml-auto" style="margin-left: auto">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" *ngIf="!isLoggedIn"><a class="nav-link" routerLink="authorize/login">Login</a></li>
+      
+      </ul>
+      <span class="navbar-text" *ngIf="isLoggedIn && currentLogUser">
+        {{currentLogUser.FullName}} | ({{currentLogUser.Email}})
+        <button class="btn btn-outline-info" (click)="logout()">Logout</button>
+      </span>
+    </div>
+  </div>
+</nav> 

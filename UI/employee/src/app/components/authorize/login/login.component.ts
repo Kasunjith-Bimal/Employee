@@ -11,22 +11,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  implements OnInit{
-
+  loadingForm : boolean = false;
   loginForm!: FormGroup;
   isErrorShowing : boolean = false;
   errorMessage : string = '';
   constructor(private formBuilder: FormBuilder,private authorizeService : AuthorizeService,private toastr: ToastrService,private router: Router) {}
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+    if(this.authorizeService.isTokenValid()){
+      let role = this.authorizeService.getRoleusingToken();
+      if(role == "Admin"){
+        this.router.navigate(['admin/admins']);
+      }else{
+        //employee Role 
+        this.router.navigate(['employee/employeeDetail']);
+      }
+    }else{
+      this.loadingForm = true;
+      this.loginForm = this.formBuilder.group({
+        username: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required]
+      });
+    }
+   
   }
 
   onSubmit() {
     if (this.loginForm.invalid) {
-      console.log("Login Fail")
+      // console.log("Login Fail")
+      this.toastr.error("Login Fail");
     }else{
       
       let login : Login =
@@ -38,21 +51,23 @@ export class LoginComponent  implements OnInit{
       this.authorizeService.login(login).subscribe((response:any)=>{
         if(response.succeeded){
           debugger;
+          this.toastr.success("Login Success");
           console.log(response);
           if(response.payload.isFirstLogin){
             this.authorizeService.setAccessTokenAndUser(response.payload);
             this.router.navigate(['authorize/changepassword']);
           }else{
             this.authorizeService.setAccessTokenAndUser(response.payload);
-            let role = this.authorizeService.getRoleusingToken();
-            if(role == "Admin"){
-              this.router.navigate(['admin/adminList']);
-            }else{
-              //employee Role 
-              this.router.navigate(['employee/employeeDetail']);
-            }
-          
-         
+            setTimeout(() => {
+              let role = this.authorizeService.getRoleusingToken();
+              if(role == "Admin"){
+                this.router.navigate(['admin/admins']);
+              }else{
+                //employee Role 
+                this.router.navigate(['employee/employeeDetail']);
+              }
+            }, 500);
+           
           }
          
           // navigation  route be use;

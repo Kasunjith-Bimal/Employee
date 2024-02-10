@@ -1,1 +1,69 @@
-<p>admin-form works!</p>
+<!-- registration.component.html -->
+<div class="registration-container">
+    <div class="left-section">
+      <img src="assets/your-image.jpg" alt="Welcome">
+    </div>
+    <div class="right-section">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+        <!-- Email Field (example shown previously) -->
+  
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" formControlName="firstName">
+          <div *ngIf="registrationForm.get('firstName')?.hasError('required')  && registrationForm.get('firstName')?.invalid && registrationForm.get('firstName')?.touched ">
+            First Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" formControlName="lastName">
+            <div *ngIf="registrationForm.get('lastName')?.hasError('required')  && registrationForm.get('lastName')?.invalid && registrationForm.get('lastName')?.touched ">
+              Last Name is required.
+            </div>
+        </div>
+  
+  
+        <div class="form-group">
+          <label for="salary">Salary:</label>
+          <input type="number" id="salary" formControlName="salary">
+          <div *ngIf="registrationForm.get('salary')?.touched && registrationForm.get('salary')?.invalid">
+            <div *ngIf="registrationForm.get('salary')?.hasError('required')">Salary is required.</div>
+            <div *ngIf="registrationForm.get('salary')?.hasError('pattern')">Salary must be a number.</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="joinDate">Join Date:</label>
+          <input type="date" id="joinDate" formControlName="joinDate">
+          <div *ngIf="registrationForm.get('joinDate')?.touched && registrationForm.get('joinDate')?.invalid">
+            Join Date is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="telephone">Telephone:</label>
+            <input type="tel" id="telephone" formControlName="telephone">
+            <div *ngIf="registrationForm.get('telephone')?.touched && registrationForm.get('telephone')?.errors">
+              <div *ngIf="registrationForm.get('telephone')?.hasError('required')">Telephone is required.</div>
+              <div *ngIf="registrationForm.get('telephone')?.hasError('pattern')">Telephone must be 10 digits.</div>
+            </div>
+        </div>
+  
+        <!-- Additional fields follow the same pattern -->
+  
+        <div class="form-group">
+            <label for="roleType">Role Type:</label>
+            <select id="roleType" formControlName="roleType">
+              <option [ngValue]="roleType.Admin">Admin</option>
+              <option [ngValue]="roleType.Employee">Employee</option>
+            </select>
+            <div *ngIf="registrationForm.get('roleType')?.touched && registrationForm.get('roleType')?.invalid">
+              Role Type is required.
+            </div>
+          </div>
+  
+        <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+      </form>
+    </div>
+  </div>

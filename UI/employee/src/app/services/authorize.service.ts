@@ -9,12 +9,14 @@ import { LoginUserAndAccessToken } from '../models/LoginUserAndAccessToken';
 import { LoginUser } from '../models/LoginUser';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Token } from '@angular/compiler';
+import { Employee } from '../models/Employee';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizeService {
   
- private loggedInUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  private loggedInUserSubject: BehaviorSubject<LoginUser | null> = new BehaviorSubject<LoginUser | null>(null);
+
  constructor(private http: HttpClient) {
  }
 
@@ -24,11 +26,13 @@ export class AuthorizeService {
  }
 
  changePassword(changePassword: ChangePassword){
+  debugger;
   const url = `${environment.baseUrl}api/Authentication/ChangePassword`;
   return this.http.put(url,changePassword);
  }
 
- register(register: Register){
+ register(register: Employee){
+  debugger;
   const url = `${environment.baseUrl}api/Authentication/Register`;
   return this.http.post(url,register);
  }
@@ -45,7 +49,37 @@ setAccessTokenAndUser(response: any): void {
   this.loggedInUserSubject.next(LoginUser);
 }
 
-getLoggedInUser(): Observable<any> {
+
+setLogedUser(){
+  const token = this.getAccessToken();
+  if (token !== null && token !== undefined && token !== ''){
+    const helper = new JwtHelperService();
+     var tokenDetail = JSON.parse(token);
+     debugger;
+     console.log(tokenDetail);
+     let decodedToken = helper.decodeToken(tokenDetail.accessToken);
+     console.log(decodedToken);
+     const currentTime = Date.now() / 1000; // Convert milliseconds to seconds
+     if(decodedToken.exp < currentTime){
+      return null
+     }else{
+      let loginUser : LoginUser = {
+        Email : decodedToken.email,
+        FullName : decodedToken.name,
+        IsFirstLogin :true
+      };
+      this.loggedInUserSubject.next(loginUser);
+      return loginUser;
+     }
+  }else{
+    return null;
+  }
+ 
+}
+
+
+getLoggedInUser(): Observable<LoginUser | null> {
+  debugger;
   return this.loggedInUserSubject.asObservable();
 }
 
@@ -55,14 +89,30 @@ getAccessToken() {
 }
 
 logout(): void {
-  this.loggedInUserSubject.next(null);
+  //this.loggedInUserSubject.next(null);
   localStorage.removeItem('access-token');
   // Perform other logout actions if necessary
 }
 
 isTokenValid(): boolean {
+  debugger;
   const token = this.getAccessToken();
-  return token !== null && token !== undefined && token !== '';
+  if (token !== null && token !== undefined && token !== ''){
+    const helper = new JwtHelperService();
+     var tokenDetail = JSON.parse(token);
+     debugger;
+     console.log(tokenDetail);
+     let decodedToken = helper.decodeToken(tokenDetail.accessToken);
+     console.log(decodedToken);
+     const currentTime = Date.now() / 1000; // Convert milliseconds to seconds
+     if(decodedToken.exp < currentTime){
+      return false
+     }else{
+      return true;
+     }
+  }else{
+    return false;
+  }
 }
 
 

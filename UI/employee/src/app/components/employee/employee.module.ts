@@ -4,10 +4,11 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail.compo
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/authGuard/authGuard';
 
 const routes: Routes = [
   { path: 'employeeDetail', component: EmployeeDetailComponent },
-  { path: 'employeeForm', component: EmployeeFormComponent },
+  { path: 'employeeForm', component: EmployeeFormComponent},
 ];
 
 

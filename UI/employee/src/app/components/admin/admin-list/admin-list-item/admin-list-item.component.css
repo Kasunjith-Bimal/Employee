@@ -1,0 +1,4 @@
+.custom-card-spacing {
+    margin-bottom: 1rem; /* Adds space below each card */
+    margin-right: 1rem; /* Adds space to the right of each card, useful for multi-column layouts */
+  }

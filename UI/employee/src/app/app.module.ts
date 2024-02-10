@@ -18,10 +18,16 @@ import { EmployeeListItemComponent } from './components/admin/employee-list/empl
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationComponent } from './components/navigation/navigation/navigation.component';
+import { LoaderComponent } from './components/loader/loader.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationComponent,
+    
+
   ],
   imports: [
     BrowserModule,

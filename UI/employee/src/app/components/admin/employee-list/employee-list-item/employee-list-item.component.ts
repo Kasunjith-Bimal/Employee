@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Employee } from 'src/app/models/Employee';
 
 @Component({
   selector: 'app-employee-list-item',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./employee-list-item.component.css']
 })
 export class EmployeeListItemComponent {
+  @Input() item!: Employee;
 
+  onDelete(id:string){
+
+  }
 }

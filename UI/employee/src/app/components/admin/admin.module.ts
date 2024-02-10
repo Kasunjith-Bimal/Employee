@@ -7,21 +7,27 @@ import { EmployeeListItemComponent } from './employee-list/employee-list-item/em
 import { AdminFormComponent } from './admin-form/admin-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/app/authGuard/authGuard';
+import { SearchPipe } from 'src/app/pipes/search.pipe';
+import { LoaderComponent } from '../loader/loader.component';
 
 const routes: Routes = [
-  { path: 'adminList', component: AdminListComponent },
-  { path: 'employeeList', component: EmployeeListComponent },
+  { path: 'admins', component: AdminListComponent },
+  { path: 'employees', component: EmployeeListComponent },
 ];
 
 
 
 @NgModule({
   declarations: [
+    SearchPipe,
     AdminListComponent,
     AdminListItemComponent,
     EmployeeListComponent,
     EmployeeListItemComponent,
-    AdminFormComponent
+    AdminFormComponent,
+    LoaderComponent
+
   ],
   imports: [
     CommonModule,
