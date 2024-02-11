@@ -22,11 +22,11 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
-      <li class="nav-item" *ngIf="isLoggedIn && role=='Admin'"><a class="nav-link"  routerLinkActive="active"  [class.activeLink]="activeLink === 'admin/admins'" (click)="setActiveLink('admin/admins')">Admin List</a></li>
-      <li class="nav-item" *ngIf="isLoggedIn && role=='Admin'"><a class="nav-link"   routerLinkActive="active" [class.activeLink]="activeLink === 'admin/employees'" (click)="setActiveLink('admin/employees')">Employee List</a></li>
-      <li class="nav-item" *ngIf="isLoggedIn && role=='Employee'"><a class="nav-link"   routerLinkActive="active" [class.activeLink]="activeLink === 'employee/employeeDetail'" (click)="setActiveLink('employee/employeeDetail')">Employee Detail</a></li>
-      <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link"  routerLinkActive="active" [class.activeLink]="activeLink === 'authorize/changepassword'"  (click)="setActiveLink('authorize/changepassword')">Change Password</a></li>
-      <li class="nav-item" *ngIf="isLoggedIn && role=='Admin'"><a class="nav-link"  routerLinkActive="active" [class.activeLink]="activeLink === 'authorize/register'"  (click)="setActiveLink('authorize/register')">Register</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn && role=='Admin'"><a class="nav-link"  routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}"  routerLink="admin/admins" >Admin List</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn && role=='Admin'"><a class="nav-link"   routerLinkActive="active" routerLink="admin/employees">Employee List</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn && role=='Employee'"><a class="nav-link"   routerLinkActive="active" routerLink="employee/employeeDetail">Employee Detail</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link"  routerLinkActive="active" routerLink="authorize/changepassword">Change Password</a></li>
+      <li class="nav-item" *ngIf="isLoggedIn && role=='Admin'"><a class="nav-link"  routerLinkActive="active" routerLink="authorize/register">Register</a></li>
     </ul>
     <div class="ml-auto" style="margin-left: auto">
       <ul class="navbar-nav mr-auto">
