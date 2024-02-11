@@ -16,18 +16,18 @@ export class AdminService {
    }
 
    getAdminById(adminId:string){
-    const url = `${environment.baseUrl}api/Admin/${adminId}}`;
+    const url = `${environment.baseUrl}api/Admin/${adminId}`;
     return this.http.get(url);
    }
 
    deleteEmployeeByAdmin(employeeId:string){
-    const url = `${environment.baseUrl}api/Admin/Employee/${employeeId}/delete}`;
+    const url = `${environment.baseUrl}api/Admin/Employee/${employeeId}/delete`;
     return this.http.delete(url);
    }
 
 
    updateEmployeeByAdmin(employee: Employee){
-    const url = `${environment.baseUrl}api/Admin/Employee/${employee.id}/edit}`;
+    const url = `${environment.baseUrl}api/Admin/Employee/${employee.id}/edit`;
     return this.http.put(url,employee);
    }
 }

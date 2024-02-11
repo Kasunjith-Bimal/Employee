@@ -1,4 +1,5 @@
-﻿using Employee.Application.Command.EmployeeReleted.DeleteEmployee;
+﻿using Employee.API.Dtos;
+using Employee.Application.Command.EmployeeReleted.DeleteEmployee;
 using Employee.Application.Command.EmployeeReleted.UpdateEmployeeByAdmin;
 using Employee.Application.Queries.EmployeeReleted.GetAllAdmin;
 using Employee.Application.Queries.EmployeeReleted.GetAllEmployee;
@@ -86,7 +87,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpPut("employee/{id}/edit")]
-        public async Task<IActionResult> UpdateEmployee(string id, EmployeeDetail employee)
+        public async Task<IActionResult> UpdateEmployee(string id, EditDto employee)
         {
             try
             {
@@ -96,7 +97,17 @@ namespace Employee.API.Controllers
                 var client = this.mediator.CreateRequestClient<UpdateEmployeeByAdminCommand>();
                 var response = await client.GetResponse<ResponseWrapper<UpdateEmployeeByAdminResponse>>(new UpdateEmployeeByAdminCommand
                 {
-                    employee = employee,
+                    Employee = new UpdateEmployeeByAdminDetails
+                    {
+                        Id = employee.Id,
+                        Email = employee.Email,
+                        Address = employee.Address,
+                        FullName = employee.FullName,
+                        JoinDate = employee.JoinDate,
+                        RoleType = employee.RoleType,
+                        Salary = employee.Salary,
+                        Telephone = employee.Telephone
+                    },
                     Id = id
                 });
 

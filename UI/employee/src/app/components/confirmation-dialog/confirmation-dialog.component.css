@@ -1,0 +1,62 @@
+/* Dialog overlay */
+.confirmation-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent backdrop */
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
+  /* Dialog box */
+  .confirmation-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners for modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Maximum width */
+    text-align: center; /* Center the text */
+  }
+  
+  /* Paragraph styling */
+  .confirmation-content p {
+    margin-bottom: 20px; /* Space between message and buttons */
+    font-size: 16px; /* Readable text size */
+    color: #333; /* Dark gray for contrast */
+  }
+  
+  /* Button styling */
+  .confirmation-content button {
+    padding: 10px 20px; /* Padding for touch targets */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    margin: 0 10px; /* Space between buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background transition */
+  }
+  
+  /* Confirm button specific styling */
+  .confirmation-content button:first-child {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+  }
+  
+  .confirmation-content button:first-child:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Cancel button specific styling */
+  .confirmation-content button:last-child {
+    background-color: black; /* Red background */
+    color: white; /* White text */
+  }
+  
+  .confirmation-content button:last-child:hover {
+    background-color:black;
+    color: white; /* Darker red on hover */
+  }

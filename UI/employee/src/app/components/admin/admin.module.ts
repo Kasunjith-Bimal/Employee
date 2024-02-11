@@ -10,13 +10,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/authGuard/authGuard';
 import { SearchPipe } from 'src/app/pipes/search.pipe';
 import { LoaderComponent } from '../loader/loader.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 const routes: Routes = [
   { path: 'admins', component: AdminListComponent },
   { path: 'employees', component: EmployeeListComponent },
+  { path: ':id/edit', component: AdminFormComponent },
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ const routes: Routes = [
     EmployeeListComponent,
     EmployeeListItemComponent,
     AdminFormComponent,
-    LoaderComponent
+    LoaderComponent,
+    ConfirmationDialogComponent
 
   ],
   imports: [

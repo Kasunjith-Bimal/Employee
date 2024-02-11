@@ -272,5 +272,20 @@ namespace Employee.Domain.Services
 
             }
         }
+
+        public async Task<EmployeeDetail> RemoveAndAddRolesAsync(EmployeeDetail employee, IList<string> oldRoleType, RoleType newRoleType)
+        {
+            try
+            {
+                return await _writeRepository.RemoveAndAddRolesAsync(employee, oldRoleType, newRoleType);
+            }
+            catch (Exception ex)
+            {
+
+                this.logger.LogDebug($"[EmployeeService:RemoveAndAddRolesAsync] exception occurred: {ex.Message} - Stacktrace: {ex.StackTrace}");
+                return null;
+
+            }
+        }
     }
 }

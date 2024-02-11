@@ -41,6 +41,11 @@ namespace Employee.Infrastructure.Persistence.Repository.EmployeeRepository
                 
         }
 
+        public Task<EmployeeDetail> AddRoleToEmployee(EmployeeDetail employee, RoleType roleType)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> ChangePasswordAsync(EmployeeDetail employee, string oldPassword, string NewPassword)
         {
             try
@@ -73,6 +78,31 @@ namespace Employee.Infrastructure.Persistence.Repository.EmployeeRepository
             {
                 return false;
             }
+        }
+
+        public async Task<EmployeeDetail> RemoveAndAddRolesAsync(EmployeeDetail employee, IList<string> oldRoleType, RoleType newRoleType)
+        {
+            try
+            {
+               
+                var result =  await _userManager.RemoveFromRolesAsync(employee, oldRoleType);
+
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(employee, Enum.GetName(typeof(RoleType), newRoleType));
+                    return employee;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+            
         }
 
         public async Task<EmployeeDetail> UpdateEmployee(EmployeeDetail employee)

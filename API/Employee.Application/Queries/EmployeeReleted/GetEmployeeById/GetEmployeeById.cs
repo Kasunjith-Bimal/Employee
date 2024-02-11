@@ -36,11 +36,22 @@ namespace Employee.Application.Queries.EmployeeReleted.GetEmployeeById
 
                     if (findEmployee != null)
                     {
+                        var roleType = await this.employeeService.GetUserRolesAsync(findEmployee);
                         this.logger.LogInformation($"[GetEmployeeById] Successfuly get employee id {context.Message.Id}");
 
                         var response = new GetEmployeeByIdResponse
                         {
-                            employee = findEmployee
+                            employee = new GetEmployeeByIdDetail
+                            {
+                                Id = findEmployee.Id,
+                                Email = findEmployee.Email,
+                                Address = findEmployee.Address,
+                                FullName = findEmployee.FullName,
+                                JoinDate = findEmployee.JoinDate,
+                                Salary = findEmployee.Salary,
+                                Telephone = findEmployee.Telephone,
+                                RoleType = roleType[0].ToLower() == "admin"? Domain.Enum.RoleType.ADMIN : Domain.Enum.RoleType.EMPLOYEE
+                            }
                         };
 
                         await context.RespondAsync(ResponseWrapper<GetEmployeeByIdResponse>.Success("Successfuly get employee", response));

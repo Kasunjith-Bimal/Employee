@@ -13,6 +13,8 @@ export class AdminListComponent implements OnInit {
   items : Employee[] = [];
   searchText : string ="";
   isLoading : boolean = false;
+  showConfirmation : boolean = false;
+  deleteId : string = "";
   constructor(private adminService: AdminService,private toaster: ToastrService) {
    
     
@@ -37,8 +39,30 @@ export class AdminListComponent implements OnInit {
     })
   }
 
-  deleteItem(id:string){
+  onConfirmDelete(){
+    this.showConfirmation = false;
+    this.adminService.deleteEmployeeByAdmin(this.deleteId).subscribe((response:any)=>{
+     
+      if(response.succeeded){
+        this.items = this.items.filter(x=>x.id != this.deleteId);
+        this.toaster.success("Employee Delete Successfuly", 'Success');
+       
+      }else{
+       this.toaster.error(response.message, 'System Error. Please contact administrator',{timeOut: 2000,extendedTimeOut: 0});
+      }
+      },
+      error => {
+       this.toaster.error(error.error.message, 'System Error. Please contact administrator',{timeOut: 2000,extendedTimeOut: 0});
+     });
+  }
 
+  onCancelDelete(){
+    this.showConfirmation = false;
+  }
+
+  deleteItem(id:string){
+    this.deleteId = id;
+    this.showConfirmation = true;
   }
 
 }

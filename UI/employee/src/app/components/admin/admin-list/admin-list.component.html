@@ -13,3 +13,7 @@
       </div>
     </div>
 </div>
+<app-confirmation-dialog *ngIf="showConfirmation" 
+                         [message]="'Do you really want to delete this item?'"
+                         (confirm)="onConfirmDelete()"
+                         (cancel)="onCancelDelete()"></app-confirmation-dialog>

@@ -17,5 +17,9 @@ namespace Employee.Domain.Intefaces.IEmployeeRepository
 
         Task<bool> ChangePasswordAsync(EmployeeDetail employee, string oldPassword, string NewPassword);
 
+        Task<EmployeeDetail> RemoveAndAddRolesAsync(EmployeeDetail employee, IList<string> oldRoleType, RoleType newRoleType);
+
+       
+
     }
 }
