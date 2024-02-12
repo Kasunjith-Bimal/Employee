@@ -43,9 +43,10 @@ To set up and update the database:
 ```
 2. **get package manager console for Employee.Infrastructure class library :**
   1. ** Change seed data before Add migration **
-     ``` 
+   ``` 
    Edit EmployeeDbContext.cs class inside data 
-    ```
+   ```
+      
    ![Change Seed Data](Document/EmployeeDbContext.png)
 
    if not change EmployeeDbContext.cs you can log system using 
@@ -53,18 +54,18 @@ To set up and update the database:
    Email : kasunysoft@gmail.com
    Password : KasunJith123@
    ```
-   
-  2. **Add a Migration:**
+3. **get package manager console for Employee.Infrastructure class library:** 
+  1. **Add a Migration:**
    ```
    Add-Migration {{migrationName}}
    ```
    Replace MigrationName with a descriptive name for your migration.
    
-  3. **Update the Database:**
+  2. **Update the Database:**
    ```
    update-database
    ```
-3. **change appsetting json**
+4. **change appsetting json**
  ```
  "JWT": {
   "ValidAudience": "{your api base url}",
