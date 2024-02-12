@@ -41,7 +41,7 @@ To set up and update the database:
   "DefaultConnection": "Server={{severName}};Database={{databaseName}};Trusted_Connection=True;"
 },
 ```
-2. **get package manager console for Employee.Infrastructure class library :**
+2. **Change seed data before Add migration :**
   1. ** Change seed data before Add migration **
    ``` 
    Edit EmployeeDbContext.cs class inside data 
