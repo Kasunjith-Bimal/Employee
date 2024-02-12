@@ -4,6 +4,7 @@ using Employee.Infrastructure.Persistence.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Employee.Infrastructure.Migrations
 {
     [DbContext(typeof(EmployeeDbContext))]
-    partial class EmployeeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240212153021_isActiveMigration")]
+    partial class isActiveMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,10 +115,10 @@ namespace Employee.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2d5456a8-0030-442b-a77f-ea4bc399417b",
+                            Id = "fb350b07-5105-4606-994e-1c9f7938d3a6",
                             AccessFailedCount = 0,
                             Address = "No 212,Walekade,Palugasdamana,Polonnaruwa.",
-                            ConcurrencyStamp = "68f1e090-27cb-44df-8d68-4f803aae2f1c",
+                            ConcurrencyStamp = "27186d86-d5a0-42b9-94ce-855ebac0b09e",
                             Email = "kasunysoft@gmail.com",
                             EmailConfirmed = false,
                             FullName = "Mirahampe Patisthana Gedara Kasunjith Bimal Lakshitha",
@@ -126,11 +128,11 @@ namespace Employee.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KASUNYSOFT@GMAIL.COM",
                             NormalizedUserName = "KASUNYSOFT@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDtrSnFSyrr8eey0HWzWkploAeyqQav9yZJzljZbgen/AWmuPi3s9BOttbbIIilJqw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDfvb6PRsZCAsY0PHlwMeYME0dJhH617ZNec1t/eTanfOz8wYPb6zuT0EIA+kO7drw==",
                             PhoneNumber = "0716063159",
                             PhoneNumberConfirmed = false,
                             Salary = 333000m,
-                            SecurityStamp = "b80c4325-abea-471b-92c1-9631c0d9d276",
+                            SecurityStamp = "e13c642c-8da8-4fdf-a2fa-0cbeeeff5946",
                             Telephone = "0716063159",
                             TwoFactorEnabled = false,
                             UserName = "kasunysoft@gmail.com"
@@ -166,15 +168,15 @@ namespace Employee.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a72a4b7d-d9bd-4f26-bf85-ec86189f74ca",
-                            ConcurrencyStamp = "9ba279f2-2cde-4c56-8517-48cdf1ddb8b3",
+                            Id = "3dc1eb08-8176-4029-afac-39f965fd0cd0",
+                            ConcurrencyStamp = "3a4cd997-6d5a-42eb-abdc-2540c0469d7b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "cf0df154-0cd4-4fcc-96bb-48a616334931",
-                            ConcurrencyStamp = "9b5674ad-1aff-4764-ac49-3bf58d2911a4",
+                            Id = "33be3b68-f4f0-4793-b110-4d7ae05ebf7b",
+                            ConcurrencyStamp = "6be42897-12ca-4fd7-bcdf-6d8cdb195799",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -269,8 +271,8 @@ namespace Employee.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2d5456a8-0030-442b-a77f-ea4bc399417b",
-                            RoleId = "a72a4b7d-d9bd-4f26-bf85-ec86189f74ca"
+                            UserId = "fb350b07-5105-4606-994e-1c9f7938d3a6",
+                            RoleId = "3dc1eb08-8176-4029-afac-39f965fd0cd0"
                         });
                 });
 

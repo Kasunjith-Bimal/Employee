@@ -48,6 +48,7 @@ namespace Employee.Application.Command.EmployeeReleted.UpdateEmployeeByAdmin
                             getEmployee.Telephone = context.Message.Employee.Telephone;
                             getEmployee.JoinDate = context.Message.Employee.JoinDate;
                             getEmployee.Address = context.Message.Employee.Address;
+                            getEmployee.IsActive = context.Message.Employee.IsActive;
 
                             this.logger.LogInformation($"[UpdateEmployeeByAdmin] EmployeeService UpdateEmployeeByAdmin method call employeeid : {context.Message.Employee.Id}");
                             var updatedEmployeeDetail = await this.employeeService.UpdateEmployee(getEmployee);
@@ -72,7 +73,8 @@ namespace Employee.Application.Command.EmployeeReleted.UpdateEmployeeByAdmin
                                             JoinDate = updatedEmployeeDetail.JoinDate,
                                             RoleType = context.Message.Employee.RoleType,
                                             Salary = updatedEmployeeDetail.Salary,
-                                            Telephone = updatedEmployeeDetail.Telephone
+                                            Telephone = updatedEmployeeDetail.Telephone,
+                                            IsActive = updatedEmployeeDetail.IsActive
                                         }
                                     };
 

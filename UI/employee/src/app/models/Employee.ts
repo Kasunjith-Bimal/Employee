@@ -10,5 +10,6 @@ export interface Employee {
     joinDate: Date,
     address: string,
     telephone: string,
-    roleType: RoleType
+    roleType: RoleType,
+    isActive : boolean
   }

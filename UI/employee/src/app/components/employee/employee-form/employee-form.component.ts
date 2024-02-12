@@ -25,7 +25,8 @@ export class EmployeeFormComponent implements  OnInit {
     joinDate : new Date(),
     telephone : "",
     address :"",
-    roleType : RoleType.Employee
+    roleType : RoleType.Employee,
+    isActive : true
   }
   isLoading: boolean = false;
   userId: string="";
@@ -104,7 +105,8 @@ export class EmployeeFormComponent implements  OnInit {
         joinDate : new Date(),
         telephone : registerValue.telephone,
         address :registerValue.address,
-        roleType :  RoleType.Employee
+        roleType :  RoleType.Employee,
+        isActive : true
     
       }
 

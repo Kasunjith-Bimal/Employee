@@ -1,4 +1,5 @@
 ﻿using Employee.Domain.Entities;
+using Employee.Domain.Enum;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,21 @@ namespace Employee.Application.Command.EmployeeReleted.UpdateEmployeeByEmployee
 {
     public class UpdateEmployeeByEmployeeResponse
     {
-        public EmployeeDetail employee { get; set; }
+        public UpdateEmployeeByEmployeeDetilResponse employee { get; set; }
 
+    }
+
+    public class UpdateEmployeeByEmployeeDetilResponse
+    {
+        public string Id { get; set; }
+        public string Email { get; set; }
+        public string FullName { get; set; }
+        public decimal Salary { get; set; }
+        public DateTime JoinDate { get; set; }
+        public string Address { get; set; }
+        public string Telephone { get; set; }
+        public RoleType RoleType { get; set; }
+        public bool IsActive { get; set; }
     }
 
 

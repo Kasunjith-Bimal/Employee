@@ -54,7 +54,8 @@ namespace Employee.Application.Queries.EmployeeReleted.GetAllEmployee
                             JoinDate = employee.JoinDate,
                             Salary = employee.Salary,
                             Telephone = employee.Telephone,
-                            RoleType = RoleType.EMPLOYEE
+                            RoleType = RoleType.EMPLOYEE,
+                            IsActive  = employee.IsActive
 
                         };
 

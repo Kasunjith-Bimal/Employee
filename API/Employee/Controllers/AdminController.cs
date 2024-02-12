@@ -111,7 +111,9 @@ namespace Employee.API.Controllers
                         JoinDate = employee.JoinDate,
                         RoleType = employee.RoleType,
                         Salary = employee.Salary,
-                        Telephone = employee.Telephone
+                        Telephone = employee.Telephone,
+                        IsActive = employee.IsActive
+
                     },
                     Id = id
                 });

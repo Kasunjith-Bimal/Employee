@@ -27,5 +27,6 @@ namespace Employee.Application.Queries.EmployeeReleted.GetEmployeeById
         public string Address { get; set; }
         public string Telephone { get; set; }
         public RoleType RoleType { get; set; }
+        public bool IsActive { get; set; }
     }
 }

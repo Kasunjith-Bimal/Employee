@@ -12,5 +12,7 @@ namespace Employee.API.Dtos
         public string Address { get; set; }
         public string Telephone { get; set; }
         public RoleType RoleType { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

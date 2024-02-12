@@ -1,4 +1,5 @@
 ﻿using Employee.Application.Wrappers;
+using Employee.Domain.Enum;
 using Employee.Domain.Intefaces;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
@@ -56,7 +57,19 @@ namespace Employee.Application.Command.EmployeeReleted.UpdateEmployeeByEmployee
 
                                 var response = new UpdateEmployeeByEmployeeResponse
                                 {
-                                    employee = updatedEmployeeDetail
+                                    employee = new UpdateEmployeeByEmployeeDetilResponse
+                                    {
+                                        Email = updatedEmployeeDetail.Email,
+                                        Address= updatedEmployeeDetail.Address,
+                                        FullName = updatedEmployeeDetail.FullName,
+                                        Id = updatedEmployeeDetail.Id,
+                                        IsActive = updatedEmployeeDetail.IsActive,
+                                        JoinDate = updatedEmployeeDetail.JoinDate,
+                                        RoleType = RoleType.EMPLOYEE,
+                                        Salary = updatedEmployeeDetail.Salary,
+                                        Telephone = updatedEmployeeDetail.Telephone,
+         
+                                    }
                                 };
 
                                 await context.RespondAsync(ResponseWrapper<UpdateEmployeeByEmployeeResponse>.Success("Employee update successfully.", response));

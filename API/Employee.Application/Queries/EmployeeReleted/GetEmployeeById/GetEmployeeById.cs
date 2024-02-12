@@ -50,7 +50,8 @@ namespace Employee.Application.Queries.EmployeeReleted.GetEmployeeById
                                 JoinDate = findEmployee.JoinDate,
                                 Salary = findEmployee.Salary,
                                 Telephone = findEmployee.Telephone,
-                                RoleType = roleType[0].ToLower() == "admin"? Domain.Enum.RoleType.ADMIN : Domain.Enum.RoleType.EMPLOYEE
+                                RoleType = roleType[0].ToLower() == "admin"? Domain.Enum.RoleType.ADMIN : Domain.Enum.RoleType.EMPLOYEE,
+                                IsActive = findEmployee.IsActive
                             }
                         };
 

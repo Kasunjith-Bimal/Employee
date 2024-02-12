@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit {
     joinDate : new Date(),
     telephone : "",
     address :"",
-    roleType : RoleType.Employee
+    roleType : RoleType.Employee,
+    isActive : true
 
   }
   constructor(private formBuilder: FormBuilder,private authorizeService: AuthorizeService,private toastr : ToastrService,private router: Router) {
@@ -72,7 +73,8 @@ export class RegisterComponent implements OnInit {
         joinDate : registerValue.joinDate,
         telephone : registerValue.telephone,
         address :registerValue.address,
-        roleType : role == "1" ? RoleType.Admin : RoleType.Employee
+        roleType : role == "1" ? RoleType.Admin : RoleType.Employee,
+        isActive : true
     
       }
       this.authorizeService.register(newEmployee).subscribe(

@@ -15,5 +15,6 @@ namespace Employee.Domain.Entities
         public string Address { get; set; }
         public string Telephone { get; set; }
         public bool IsFirstLogin { get; set; }
+        public bool IsActive { get; set; }
     }
 }

@@ -13,6 +13,7 @@
           JoinDate : <p class="card-text"> {{ item.joinDate | date:'medium' }}</p> 
           Salary : <p class="card-text">{{ item.salary }}</p> 
           Telephone : <p class="card-text">{{ item.telephone }}</p> 
+          Status : <p class="card-text" *ngIf="item.isActive"> Active </p>  <p class="card-text" *ngIf="!item.isActive"> InActive </p> 
           <!-- Add more details as needed -->
           <button class="btn btn-danger" (click)="onDelete(item.id)">Delete</button>
           |<button class="btn btn-outline-info" (click)="onEdit(item.id)">Edit</button>

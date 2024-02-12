@@ -44,58 +44,67 @@ namespace Employee.Application.Command.AuthenticationReleted.ChangePassword
 
                             if (checkExistingEmployee != null)
                             {
-                                var chekOldPasswordCurrect = await this.employeeService.CheckPasswordAsync(checkExistingEmployee, context.Message.OldPassword);
-
-                                if (chekOldPasswordCurrect)
+                                if (checkExistingEmployee.IsActive)
                                 {
-                                    var updateNewPassword = await this.employeeService.ChangePasswordAsync(checkExistingEmployee, context.Message.OldPassword, context.Message.NewPassword);
+                                    var chekOldPasswordCurrect = await this.employeeService.CheckPasswordAsync(checkExistingEmployee, context.Message.OldPassword);
 
-                                    if (updateNewPassword)
+                                    if (chekOldPasswordCurrect)
                                     {
-                                        var getUpdatedEmployee = await this.employeeService.GetEmployeeByIdAsync(checkExistingEmployee.Id);
+                                        var updateNewPassword = await this.employeeService.ChangePasswordAsync(checkExistingEmployee, context.Message.OldPassword, context.Message.NewPassword);
 
-                                        if(getUpdatedEmployee != null)
+                                        if (updateNewPassword)
                                         {
-                                            getUpdatedEmployee.IsFirstLogin = false;
-                                            var updateEmployee = await this.employeeService.UpdateEmployee(getUpdatedEmployee);
+                                            var getUpdatedEmployee = await this.employeeService.GetEmployeeByIdAsync(checkExistingEmployee.Id);
 
-                                            if (updateEmployee != null)
+                                            if (getUpdatedEmployee != null)
                                             {
-                                                var response = new ChangePasswordResponse
+                                                getUpdatedEmployee.IsFirstLogin = false;
+                                                var updateEmployee = await this.employeeService.UpdateEmployee(getUpdatedEmployee);
+
+                                                if (updateEmployee != null)
                                                 {
-                                                    Email = updateEmployee.Email
-                                                };
+                                                    var response = new ChangePasswordResponse
+                                                    {
+                                                        Email = updateEmployee.Email
+                                                    };
 
-                                                this.logger.LogInformation($"[ChangePassword] success to change password");
-                                                await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Success("success to change password",response));
+                                                    this.logger.LogInformation($"[ChangePassword] success to change password");
+                                                    await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Success("success to change password", response));
 
+                                                }
+                                                else
+                                                {
+                                                    this.logger.LogInformation($"[ChangePassword] failed to update is first login employee");
+                                                    await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Fail("failed update is first login employee"));
+                                                }
                                             }
                                             else
                                             {
-                                                this.logger.LogInformation($"[ChangePassword] failed to update is first login employee");
-                                                await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Fail("failed update is first login employee"));
+                                                this.logger.LogInformation($"[ChangePassword] failed to get update employee");
+                                                await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Fail("failed to get update employee"));
                                             }
+
                                         }
                                         else
                                         {
-                                            this.logger.LogInformation($"[ChangePassword] failed to get update employee");
-                                            await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Fail("failed to get update employee"));
+                                            this.logger.LogInformation($"[ChangePassword] failed to update new password");
+                                            await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Fail("failed to update new password"));
                                         }
-                                        
+
+
                                     }
                                     else
                                     {
-                                        this.logger.LogInformation($"[ChangePassword] failed to update new password");
-                                        await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Fail("failed to update new password"));
+                                        this.logger.LogInformation($"[ChangePassword] password mismatch");
+                                        await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Fail("password mismatch"));
                                     }
-
-                                  
                                 }
                                 else
                                 {
-                                    this.logger.LogInformation($"[ChangePassword] password mismatch");
-                                    await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Fail("password mismatch"));
+                                    this.logger.LogInformation($"[ChangePassword] in active user");
+                                    await context.RespondAsync(ResponseWrapper<ChangePasswordResponse>.Fail("in active user"));
                                 }
+                                
                             }
                             else
                             {

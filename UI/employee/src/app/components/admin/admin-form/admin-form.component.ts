@@ -24,7 +24,8 @@ export class AdminFormComponent implements OnInit {
     joinDate : new Date(),
     telephone : "",
     address :"",
-    roleType : RoleType.Employee
+    roleType : RoleType.Employee,
+    isActive : true
   }
   isLoading: boolean = false;
   userId: string="";
@@ -40,7 +41,8 @@ export class AdminFormComponent implements OnInit {
       joinDate: ['', Validators.required],
       address :['', Validators.required],
       telephone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
-      role: ['', Validators.required]
+      role: ['', Validators.required],
+      isActive: [true] 
     });
   }
 
@@ -73,7 +75,8 @@ export class AdminFormComponent implements OnInit {
           joinDate: joinDate.split('T')[0],
           address:  this.registerEmployee.address,
           telephone : this.registerEmployee.telephone,
-          role : this.registerEmployee.roleType == 1 ? "1":"2"
+          role : this.registerEmployee.roleType == 1 ? "1":"2",
+          isActive : this.registerEmployee.isActive
         });
         //console.log( joinDate)
         this.isLoading = false;
@@ -114,8 +117,8 @@ export class AdminFormComponent implements OnInit {
         joinDate : registerValue.joinDate,
         telephone : registerValue.telephone,
         address :registerValue.address,
-        roleType : role == "1" ? RoleType.Admin : RoleType.Employee
-    
+        roleType : role == "1" ? RoleType.Admin : RoleType.Employee,
+        isActive : registerValue.isActive
       }
 
       this.adminService.updateEmployeeByAdmin(ediEmployee).subscribe(

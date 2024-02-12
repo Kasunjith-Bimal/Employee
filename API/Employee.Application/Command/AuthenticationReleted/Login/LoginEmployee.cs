@@ -38,51 +38,60 @@ namespace Employee.Application.Command.AuthenticationReleted.Login
                     {
                         this.logger.LogInformation($"[LoginEmployee] Check Email is exsist");
                         var checkExistingEmployee = await this.employeeService.GetEmployeeByEmailAsync(context.Message.Email);
-
-                        if (checkExistingEmployee != null)
+                        if (checkExistingEmployee.IsActive)
                         {
-                            var chekPasswordCurrect = await this.employeeService.CheckPasswordAsync(checkExistingEmployee, context.Message.Password);
-
-                            if (chekPasswordCurrect)
+                            if (checkExistingEmployee != null)
                             {
-                                // generatee Token 
-                                var generateAccesstokenDetails = await this.JwtTokenManager.GenerateToken(checkExistingEmployee);
+                                var chekPasswordCurrect = await this.employeeService.CheckPasswordAsync(checkExistingEmployee, context.Message.Password);
 
-                                if(generateAccesstokenDetails != null)
+                                if (chekPasswordCurrect)
                                 {
-                                    var response = new LoginEmployeeResponse
-                                    {
-                                       TokenDetail = new LoginEmployeeTokenResponse
-                                       {
-                                           AccessToken = generateAccesstokenDetails.Item1,
-                                           Expire = generateAccesstokenDetails.Item2,
-                                       },
-                                       Email = checkExistingEmployee.Email,
-                                       FullName = checkExistingEmployee.FullName,
-                                       IsFirstLogin = checkExistingEmployee.IsFirstLogin,
-                                       Id = checkExistingEmployee.Id
-                                    };
+                                    // generatee Token 
+                                    var generateAccesstokenDetails = await this.JwtTokenManager.GenerateToken(checkExistingEmployee);
 
-                                    this.logger.LogInformation($"[LoginEmployee] success fully login");
-                                    await context.RespondAsync(ResponseWrapper<LoginEmployeeResponse>.Success("success fully login",response));
+                                    if (generateAccesstokenDetails != null)
+                                    {
+                                        var response = new LoginEmployeeResponse
+                                        {
+                                            TokenDetail = new LoginEmployeeTokenResponse
+                                            {
+                                                AccessToken = generateAccesstokenDetails.Item1,
+                                                Expire = generateAccesstokenDetails.Item2,
+                                            },
+                                            Email = checkExistingEmployee.Email,
+                                            FullName = checkExistingEmployee.FullName,
+                                            IsFirstLogin = checkExistingEmployee.IsFirstLogin,
+                                            Id = checkExistingEmployee.Id
+                                        };
+
+                                        this.logger.LogInformation($"[LoginEmployee] success fully login");
+                                        await context.RespondAsync(ResponseWrapper<LoginEmployeeResponse>.Success("success fully login", response));
+                                    }
+                                    else
+                                    {
+                                        this.logger.LogInformation($"[LoginEmployee] Fail to generate Token");
+                                        await context.RespondAsync(ResponseWrapper<LoginEmployeeResponse>.Fail("Fail to generate Token"));
+                                    }
                                 }
                                 else
                                 {
-                                    this.logger.LogInformation($"[LoginEmployee] Fail to generate Token");
-                                    await context.RespondAsync(ResponseWrapper<LoginEmployeeResponse>.Fail("Fail to generate Token"));
+                                    this.logger.LogInformation($"[LoginEmployee] password mismatch");
+                                    await context.RespondAsync(ResponseWrapper<LoginEmployeeResponse>.Fail("password not found"));
                                 }
                             }
                             else
                             {
-                                this.logger.LogInformation($"[LoginEmployee] password mismatch");
-                                await context.RespondAsync(ResponseWrapper<LoginEmployeeResponse>.Fail("password mismatch"));
+                                this.logger.LogInformation($"[LoginEmployee] Email address mismatch");
+                                await context.RespondAsync(ResponseWrapper<LoginEmployeeResponse>.Fail("Email address not found"));
                             }
                         }
                         else
                         {
-                            this.logger.LogInformation($"[LoginEmployee] Email address mismatch");
-                            await context.RespondAsync(ResponseWrapper<LoginEmployeeResponse>.Fail("Email address mismatch"));
+                            this.logger.LogInformation($"[LoginEmployee] Inactive user");
+                            await context.RespondAsync(ResponseWrapper<LoginEmployeeResponse>.Fail("Inactive user"));
+
                         }
+                       
                     }
                     else
                     {

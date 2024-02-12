@@ -55,7 +55,8 @@ namespace Employee.Application.Queries.EmployeeReleted.GetAllAdmin
                             JoinDate = employee.JoinDate,
                             Salary = employee.Salary,
                             Telephone = employee.Telephone,
-                            RoleType = RoleType.ADMIN
+                            RoleType = RoleType.ADMIN,
+                            IsActive = employee.IsActive
 
                         };
 

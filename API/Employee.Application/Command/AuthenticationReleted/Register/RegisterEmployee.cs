@@ -50,6 +50,7 @@ namespace Employee.Application.Command.AuthenticationReleted.Register
                             Telephone = context.Message.Telephone,
                             PhoneNumber = context.Message.Telephone,
                             IsFirstLogin = true,
+                            IsActive = true,
                         };
 
                         var employee = await this.employeeService.AddEmployee(employeeDetails, context.Message.RoleType);
