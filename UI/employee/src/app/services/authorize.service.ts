@@ -26,20 +26,17 @@ export class AuthorizeService {
  }
 
  changePassword(changePassword: ChangePassword){
-  debugger;
   const url = `${environment.baseUrl}api/Authentication/ChangePassword`;
   return this.http.put(url,changePassword);
  }
 
  register(register: Employee){
-  debugger;
   const url = `${environment.baseUrl}api/Authentication/Register`;
   return this.http.post(url,register);
  }
 
 
 setAccessTokenAndUser(response: any): void {
-  debugger;
   localStorage.setItem('access-token', JSON.stringify(response.tokenDetail));
   let LoginUser : LoginUser = {
     Email : response.email,
@@ -47,7 +44,7 @@ setAccessTokenAndUser(response: any): void {
     IsFirstLogin :response.isFirstLogin,
     Id : response.id
   };
-  console.log("login user1",LoginUser);
+  //console.log("login user1",LoginUser);
   localStorage.setItem('login-user', JSON.stringify(LoginUser));
   this.loggedInUserSubject.next(LoginUser);
 }
@@ -71,10 +68,9 @@ setLogedUser(){
   if (token !== null && token !== undefined && token !== ''){
     const helper = new JwtHelperService();
      var tokenDetail = JSON.parse(token);
-     debugger;
-     console.log(tokenDetail);
+     //console.log(tokenDetail);
      let decodedToken = helper.decodeToken(tokenDetail.accessToken);
-     console.log(decodedToken);
+     //console.log(decodedToken);
      const currentTime = Date.now() / 1000; // Convert milliseconds to seconds
      if(decodedToken.exp < currentTime){
       return null
@@ -97,7 +93,7 @@ setLogedUser(){
         IsFirstLogin :true,
         Id : decodedToken.nameid
       };
-      console.log("login user",loginUser);
+      //console.log("login user",loginUser);
       localStorage.setItem('login-user', JSON.stringify(loginUser));
       this.loggedInUserSubject.next(loginUser);
       return loginUser;
@@ -110,7 +106,6 @@ setLogedUser(){
 
 
 getLoggedInUser(): Observable<LoginUser | null> {
-  debugger;
   return this.loggedInUserSubject.asObservable();
 }
 
@@ -127,15 +122,13 @@ logout(): void {
 }
 
 isTokenValid(): boolean {
-  debugger;
   const token = this.getAccessToken();
   if (token !== null && token !== undefined && token !== ''){
     const helper = new JwtHelperService();
      var tokenDetail = JSON.parse(token);
-     debugger;
-     console.log(tokenDetail);
+     //console.log(tokenDetail);
      let decodedToken = helper.decodeToken(tokenDetail.accessToken);
-     console.log(decodedToken);
+     //console.log(decodedToken);
      const currentTime = Date.now() / 1000; // Convert milliseconds to seconds
      if(decodedToken.exp < currentTime){
       return false
@@ -149,15 +142,13 @@ isTokenValid(): boolean {
 
 
 getRoleusingToken() {
-  debugger;
   const token = this.getAccessToken();
   if (token !== null && token !== undefined && token !== ''){
     const helper = new JwtHelperService();
      var tokenDetail = JSON.parse(token);
-     debugger;
-     console.log(tokenDetail);
+    // console.log(tokenDetail);
     let decodedToken = helper.decodeToken(tokenDetail.accessToken);
-    console.log(decodedToken);
+    //console.log(decodedToken);
     return decodedToken.role;
 
   }

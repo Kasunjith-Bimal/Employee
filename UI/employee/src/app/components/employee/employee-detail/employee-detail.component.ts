@@ -28,7 +28,7 @@ export class EmployeeDetailComponent implements OnInit,OnDestroy {
     this.isLoading = true;
     this.currentLogUserSubscription = this.authorizeService.getLoggedInUser().subscribe((user) => {
       this.currentLogUser = user;
-      console.log(this.currentLogUser);
+      //console.log(this.currentLogUser);
       if(this.currentLogUser){
         this.role = this.authorizeService.getRoleusingToken();
         this.employeeService.getEmployeeById(this.currentLogUser.Id).subscribe(

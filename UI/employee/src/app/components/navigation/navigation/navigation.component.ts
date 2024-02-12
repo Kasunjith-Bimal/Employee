@@ -33,7 +33,7 @@ export class NavigationComponent implements OnInit,OnDestroy {
     
     if(this.authorizeService.isTokenValid()){
     
-      console.log("Role",this.role);
+      //console.log("Role",this.role);
       this.currentLogUserSubscription = this.authorizeService.getLoggedInUser().subscribe((user) => {
         this.currentLogUser = user;
         this.role = this.authorizeService.getRoleusingToken();

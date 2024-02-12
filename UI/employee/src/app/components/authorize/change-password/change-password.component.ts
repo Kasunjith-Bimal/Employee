@@ -34,8 +34,7 @@ export class ChangePasswordComponent implements OnInit {
   loginAfterPasswordChange(login : Login){
     this.authorizeService.login(login).subscribe((response:any)=>{
       if(response.succeeded){
-        debugger;
-        console.log(response);
+        //console.log(response);
         if(response.payload.isFirstLogin){
           this.authorizeService.setAccessTokenAndUser(response.payload);
           this.router.navigate(['authorize/changepassword']);
@@ -52,7 +51,7 @@ export class ChangePasswordComponent implements OnInit {
        
         // navigation  route be use;
       }else{
-        console.log("re",response)
+       // console.log("re",response)
         this.isErrorShowing = true;
         this.errorMessage = response.message;
         setTimeout(() => {
@@ -62,7 +61,7 @@ export class ChangePasswordComponent implements OnInit {
       }
     },
     error => {
-      console.log(error)
+     // console.log(error)
       this.isErrorShowing = true;
         this.errorMessage = error.error.message;
         setTimeout(() => {
@@ -85,7 +84,6 @@ export class ChangePasswordComponent implements OnInit {
       //console.log(login);
       this.authorizeService.changePassword(changePassword).subscribe((response:any)=>{
         if(response.succeeded){
-          debugger;
           this.toastr.success("Password Change Success");
           
           let Newlogin : Login =
@@ -97,7 +95,7 @@ export class ChangePasswordComponent implements OnInit {
           this.loginAfterPasswordChange(Newlogin);
           
         }else{
-          console.log("re",response)
+          //console.log("re",response)
           this.isErrorShowing = true;
           this.errorMessage = response.message;
           setTimeout(() => {
@@ -107,7 +105,7 @@ export class ChangePasswordComponent implements OnInit {
         }
       },
       error => {
-        console.log(error)
+       // console.log(error)
         this.isErrorShowing = true;
           this.errorMessage = error.error.message;
           setTimeout(() => {

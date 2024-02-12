@@ -50,9 +50,8 @@ export class LoginComponent  implements OnInit{
       //console.log(login);
       this.authorizeService.login(login).subscribe((response:any)=>{
         if(response.succeeded){
-          debugger;
           this.toastr.success("Login Success");
-          console.log(response);
+          //console.log(response);
           if(response.payload.isFirstLogin){
             this.authorizeService.setAccessTokenAndUser(response.payload);
             this.router.navigate(['authorize/changepassword']);
@@ -72,7 +71,7 @@ export class LoginComponent  implements OnInit{
          
           // navigation  route be use;
         }else{
-          console.log("re",response)
+          //console.log("re",response)
           this.isErrorShowing = true;
           this.errorMessage = response.message;
           setTimeout(() => {
@@ -82,7 +81,7 @@ export class LoginComponent  implements OnInit{
         }
       },
       error => {
-        console.log(error)
+       // console.log(error)
         this.isErrorShowing = true;
           this.errorMessage = error.error.message;
           setTimeout(() => {

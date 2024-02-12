@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   ngOnInit(): void {
-    console.log(this.router.url);
+   // console.log(this.router.url);
   }
 
   /**
    *
    */
   constructor(private router: Router) {
-  console.log(this.router.url);
+  //console.log(this.router.url);
     
   }
   title = 'employee';

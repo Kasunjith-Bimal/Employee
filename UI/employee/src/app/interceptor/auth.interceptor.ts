@@ -33,7 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // Handle specific status codes or errors
         if (error.status === 401) {
           this.router.navigate(['authorize/login'])
-          console.log(error);
+         // console.log(error);
           // Token might be expired or invalid
           // Refresh the token or navigate to login
         }

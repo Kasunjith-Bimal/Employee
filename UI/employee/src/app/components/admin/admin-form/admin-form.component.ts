@@ -62,9 +62,8 @@ export class AdminFormComponent implements OnInit {
       
       (response:any) => {
         if(response.succeeded){
-          debugger;
         this.registerEmployee = response.payload.employee;
-        console.log(this.registerEmployee)
+        //console.log(this.registerEmployee)
         let joinDate : string =   response.payload.employee.joinDate.toString();
        
         this.adminForm.setValue({
@@ -76,7 +75,7 @@ export class AdminFormComponent implements OnInit {
           telephone : this.registerEmployee.telephone,
           role : this.registerEmployee.roleType == 1 ? "1":"2"
         });
-        console.log( joinDate)
+        //console.log( joinDate)
         this.isLoading = false;
         }else{
           this.isLoading = false;
@@ -98,14 +97,12 @@ export class AdminFormComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger;
     if (this.adminForm.invalid) {
       return;
     }else{
       let registerValue = this.adminForm.value;
-      debugger;
       let role = registerValue.role;
-      console.log(role);
+      //console.log(role);
 
      let ediEmployee: Employee  = {
         id : this.userId,

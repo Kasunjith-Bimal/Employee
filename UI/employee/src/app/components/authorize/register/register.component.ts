@@ -55,14 +55,12 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger;
     if (this.registerForm.invalid) {
       return;
     }else{
       let registerValue = this.registerForm.value;
-      debugger;
       let role = registerValue.role;
-      console.log(role);
+     // console.log(role);
 
      let newEmployee: Employee  = {
         id : "",
@@ -100,6 +98,6 @@ export class RegisterComponent implements OnInit {
       );
     }
 
-    console.log(this.registerForm.value); // Implement registration logic here
+    //console.log(this.registerForm.value); // Implement registration logic here
   }
 }

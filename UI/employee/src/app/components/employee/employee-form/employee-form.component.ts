@@ -59,7 +59,6 @@ export class EmployeeFormComponent implements  OnInit {
       
       (response:any) => {
         if(response.succeeded){
-          debugger;
         this.registerEmployee = response.payload.employee;
       
         this.employeeForm.setValue({
@@ -89,12 +88,11 @@ export class EmployeeFormComponent implements  OnInit {
   }
 
   onSubmit() {
-    debugger;
+
     if (this.employeeForm.invalid) {
       return;
     }else{
       let registerValue = this.employeeForm.value;
-      debugger;
      
      let ediEmployee: Employee  = {
         id : this.userId,

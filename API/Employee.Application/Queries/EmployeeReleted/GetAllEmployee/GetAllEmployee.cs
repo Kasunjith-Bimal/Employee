@@ -1,5 +1,7 @@
-﻿using Employee.Application.Wrappers;
+﻿using Employee.Application.Queries.EmployeeReleted.GetAllAdmin;
+using Employee.Application.Wrappers;
 using Employee.Domain.Entities;
+using Employee.Domain.Enum;
 using Employee.Domain.Intefaces;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
@@ -38,9 +40,31 @@ namespace Employee.Application.Queries.EmployeeReleted.GetAllEmployee
                 {
                     this.logger.LogInformation($"[GetAllEmployee] Successfuly get all tasks");
 
+                    List<GetAllEmployeeResponseDetail> allEmployeeList = new List<GetAllEmployeeResponseDetail>();
+
+                    foreach (var employee in allEmployee)
+                    {
+
+                        GetAllEmployeeResponseDetail employeeData = new GetAllEmployeeResponseDetail()
+                        {
+                            Email = employee.Email,
+                            Address = employee.Address,
+                            FullName = employee.FullName,
+                            Id = employee.Id,
+                            JoinDate = employee.JoinDate,
+                            Salary = employee.Salary,
+                            Telephone = employee.Telephone,
+                            RoleType = RoleType.EMPLOYEE
+
+                        };
+
+                        allEmployeeList.Add(employeeData);
+                    }
+
+
                     var response = new GetAllEmployeeResponse
                     {
-                        employees = allEmployee.OrderByDescending(x => x.JoinDate).ToList()
+                        employees = allEmployeeList.OrderByDescending(x => x.JoinDate).ToList()
                     };
 
                     await context.RespondAsync(ResponseWrapper<GetAllEmployeeResponse>.Success("Successfuly get all employees", response));
@@ -50,7 +74,7 @@ namespace Employee.Application.Queries.EmployeeReleted.GetAllEmployee
                 {
                     var response = new GetAllEmployeeResponse
                     {
-                        employees = new List<EmployeeDetail>()
+                        employees = new List<GetAllEmployeeResponseDetail>()
                     };
 
                     await context.RespondAsync(ResponseWrapper<GetAllEmployeeResponse>.Success("Successfuly get all employees", response));
