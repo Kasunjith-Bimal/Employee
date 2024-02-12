@@ -1,7 +1,10 @@
 ﻿using Employee.Domain.Entities;
+using Employee.Infrastructure.Persistence.Repository.EmployeeRepository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +53,7 @@ namespace Employee.Infrastructure.Persistence.EFCore
             };
 
             var hasher = new PasswordHasher<EmployeeDetail>();
-            adminUser.PasswordHash = hasher.HashPassword(adminUser, "KasunYsoft123@");
+            adminUser.PasswordHash = hasher.HashPassword(adminUser, "KasunJith123@");
 
             builder.Entity<EmployeeDetail>().HasData(adminUser);
 
