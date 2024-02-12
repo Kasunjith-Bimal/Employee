@@ -63,6 +63,10 @@ To set up and update the database:
 ### Running the Application
 Run Web API application
 
+### API Database Structure 
+
+![Database Structure](Document/DbStracture.png)
+
 ## UI 
 -----------------------------------------------
 
