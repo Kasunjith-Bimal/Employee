@@ -18,17 +18,17 @@ The objective is to develop a secure and efficient web application that facilita
 ## Technology Stack
 This project is built using a variety of technologies and patterns to ensure scalability, maintainability, and security. Below is a list of the key technologies and architectural approaches used:
 
--ASP.NET Core Web API: Serves as the backend framework, providing a robust set of features for building secure and scalable web APIs.
--Angular: Utilized for the frontend development to create a dynamic and responsive user interface.
--SQL Server: The database system of choice, ensuring reliable data storage and management.
--Entity Framework Core: An object-database mapper that enables .NET developers to work with a database using .NET objects, simplifying data access and manipulation.
--Clean Architecture: Ensures that the application is organized in such a way that it's easy to maintain and extend over time, with a clear separation of concerns.
--Repository Patterns: Abstracts the data layer, making the application more maintainable and testable by separating business logic from data access logic.
--CQRS using MassTransit: Implements the Command Query Responsibility Segregation (CQRS) pattern to separate read and update operations for more scalable and maintainable code, with MassTransit facilitating lightweight message-based architecture.
--Angular Auth Guard: Used to protect routes in the Angular application, ensuring that users are authenticated and authorized to access certain pages.
--Token Interceptor: Implements token-based authentication in Angular to securely communicate with the backend API.
--Role-Based Authentication: Enhances security by ensuring users can only access features and data appropriate to their role within the application. This is implemented through the backend ASP.NET Core Web API and integrated with Angular's routing and services to enforce role-based access control (RBAC).
--Lazy Loading in Angular: Improves the performance of the Angular application by splitting it into multiple bundles. These bundles are loaded on demand rather than at the initial load of the application, significantly reducing the initial load time and improving user experience.
+- ASP.NET Core Web API: Serves as the backend framework, providing a robust set of features for building secure and scalable web APIs.
+- Angular: Utilized for the frontend development to create a dynamic and responsive user interface.
+- SQL Server: The database system of choice, ensuring reliable data storage and management.
+- Entity Framework Core: An object-database mapper that enables .NET developers to work with a database using .NET objects, simplifying data access and manipulation.
+- Clean Architecture: Ensures that the application is organized in such a way that it's easy to maintain and extend over time, with a clear separation of concerns.
+- Repository Patterns: Abstracts the data layer, making the application more maintainable and testable by separating business logic from data access logic.
+- CQRS using MassTransit: Implements the Command Query Responsibility Segregation (CQRS) pattern to separate read and update operations for more scalable and maintainable code, with MassTransit facilitating lightweight message-based architecture.
+- Angular Auth Guard: Used to protect routes in the Angular application, ensuring that users are authenticated and authorized to access certain pages.
+- Token Interceptor: Implements token-based authentication in Angular to securely communicate with the backend API.
+- Role-Based Authentication: Enhances security by ensuring users can only access features and data appropriate to their role within the application. This is implemented through the backend ASP.NET Core Web API and integrated with Angular's routing and services to enforce role-based access control (RBAC).
+- Lazy Loading in Angular: Improves the performance of the Angular application by splitting it into multiple bundles. These bundles are loaded on demand rather than at the initial load of the application, significantly reducing the initial load time and improving user experience.
 
 ## API 
 -----------------------------------------------
