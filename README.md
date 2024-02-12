@@ -1,17 +1,23 @@
 Employee
 
+
+
+
 ## Demo Project Video   
 [![Watch the video](http://img.youtube.com/vi/sTLO9aAVroc/0.jpg)](https://www.youtube.com/watch?v=sTLO9aAVroc)
 
 ## API 
 -----------------------------------------------
 ## Description
-This is Employee Management Software
-project.
+Creating a comprehensive web application for managing employee details and monthly salary payments involves a detailed design and development approach. The application requiring robust backend support from ASP.NET CORE WEB API , user-friendly frontend built with Angular.
+
+The objective is to develop a secure and efficient web application that facilitates the management of employee details and their monthly salary payments. The system will feature a dual interface for administrators and employees, ensuring secure access and personalized interactions for each user category. Administrators will have the ability to input and manage employee records, while employees will have access to their personal and salary details, with the flexibility to update specific parts of their profile.
 ## Features
-- Admin,Employee login the system
-- Admin can add,edit employee profile
-- Employee can edit profile
+- Admin and Employee Login: Separate login mechanisms for admins and employees, with security measures in place to handle authentication and authorization effectively.
+- Employee Management: Admins can input employee details including full name, email, salary, and join date into the system.
+- Automatic Email Notification: Upon adding an employee, the system automatically sends an email with a temporary password, which the employee can later change.
+- Profile Updates: Employees can update their profiles with personal details like phone numbers and addresses but cannot change their email, salary, or join date.
+- Admins can toggle the active/inactive status of employee profiles, restricting login access to active employees only.
 - More features...
 ## Getting Started
 ### Prerequisites
