@@ -11,6 +11,7 @@ namespace Employee.Application.Command.AuthenticationReleted.Login
 {
     public class LoginEmployeeResponse
     {
+        public string Id { get; set; }
         public string Email { get; set; }
         public string FullName { get; set; }
         public bool IsFirstLogin { get; set; }

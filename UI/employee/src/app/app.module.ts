@@ -26,8 +26,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    
+    NavigationComponent
 
   ],
   imports: [

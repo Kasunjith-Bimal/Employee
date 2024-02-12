@@ -44,9 +44,25 @@ setAccessTokenAndUser(response: any): void {
   let LoginUser : LoginUser = {
     Email : response.email,
     FullName : response.fullName,
-    IsFirstLogin :response.isFirstLogin
+    IsFirstLogin :response.isFirstLogin,
+    Id : response.id
   };
+  console.log("login user1",LoginUser);
+  localStorage.setItem('login-user', JSON.stringify(LoginUser));
   this.loggedInUserSubject.next(LoginUser);
+}
+
+updateUserToken(loginUser : LoginUser){
+  var fullName = loginUser.FullName;
+  let localuser = localStorage.getItem('login-user');
+  if(localuser !== null && localuser !== undefined && localuser !== ''){
+    var localUserDetail = JSON.parse(localuser);
+
+    localUserDetail.FullName = fullName;
+    localStorage.setItem('login-user', JSON.stringify(localUserDetail));
+
+    this.loggedInUserSubject.next(localUserDetail);
+  }
 }
 
 
@@ -63,11 +79,26 @@ setLogedUser(){
      if(decodedToken.exp < currentTime){
       return null
      }else{
+
+      let localuser = localStorage.getItem('login-user');
+      let fullName = "";
+      if(localuser !== null && localuser !== undefined && localuser !== ''){
+        var localUserDetail = JSON.parse(localuser);
+      
+        fullName = localUserDetail.FullName;
+      }else{
+        fullName = decodedToken.name;
+      }
+
+
       let loginUser : LoginUser = {
         Email : decodedToken.email,
-        FullName : decodedToken.name,
-        IsFirstLogin :true
+        FullName : fullName,
+        IsFirstLogin :true,
+        Id : decodedToken.nameid
       };
+      console.log("login user",loginUser);
+      localStorage.setItem('login-user', JSON.stringify(loginUser));
       this.loggedInUserSubject.next(loginUser);
       return loginUser;
      }
@@ -89,8 +120,9 @@ getAccessToken() {
 }
 
 logout(): void {
-  //this.loggedInUserSubject.next(null);
+  this.loggedInUserSubject.next(null);
   localStorage.removeItem('access-token');
+  localStorage.removeItem('login-user');
   // Perform other logout actions if necessary
 }
 

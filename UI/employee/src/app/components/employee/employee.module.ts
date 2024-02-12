@@ -6,22 +6,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/authGuard/authGuard';
 
+
+
 const routes: Routes = [
   { path: 'employeeDetail', component: EmployeeDetailComponent },
-  { path: 'employeeForm', component: EmployeeFormComponent},
+  { path: ':id/edit', component: EmployeeFormComponent},
 ];
 
 
 @NgModule({
   declarations: [
     EmployeeDetailComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes)
   ]
 })
 export class EmployeeModule { }

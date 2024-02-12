@@ -1,1 +1,22 @@
-<p>employee-detail works!</p>
+
+<div class="card mb-3 custom-card-spacing" style="max-width: 540px;" *ngIf="employee">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="assets/images/useravater.png" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <!-- Your item details here -->
+          <h5 class="card-title"> Employee </h5>
+          Name :  <h5 class="card-title"> {{ employee.fullName }}</h5>
+          Email : <p class="card-text"> {{ employee.email }}</p>
+          Address : <p class="card-text"> {{ employee.address }}</p>
+          JoinDate : <p class="card-text"> {{ employee.joinDate | date:'medium' }}</p> 
+          Salary : <p class="card-text">{{ employee.salary }}</p> 
+          Telephone : <p class="card-text">{{ employee.telephone }}</p> 
+          <!-- Add more details as needed -->
+         <button class="btn btn-outline-info" (click)="onEdit(employee.id)">Edit</button>
+        </div>
+    </div>
+  </div>
+</div>

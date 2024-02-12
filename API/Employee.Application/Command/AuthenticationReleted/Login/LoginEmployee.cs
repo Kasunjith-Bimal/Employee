@@ -59,8 +59,8 @@ namespace Employee.Application.Command.AuthenticationReleted.Login
                                        },
                                        Email = checkExistingEmployee.Email,
                                        FullName = checkExistingEmployee.FullName,
-                                       IsFirstLogin = checkExistingEmployee.IsFirstLogin
-
+                                       IsFirstLogin = checkExistingEmployee.IsFirstLogin,
+                                       Id = checkExistingEmployee.Id
                                     };
 
                                     this.logger.LogInformation($"[LoginEmployee] success fully login");

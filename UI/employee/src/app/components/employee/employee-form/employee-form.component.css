@@ -1,0 +1,101 @@
+.content-container {
+    display: flex;
+    align-items: stretch; /* This will ensure both children of the container have equal height */
+    justify-content: center;
+    min-height: 100vh; /* Adjust based on your preference */
+    padding: 20px; /* Provides some space around the content */
+  }
+  
+  .image-container {
+    flex: 1; /* Allows the image container to take up half the space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Optional: Gives a background color if the image doesn't cover the whole container */
+  }
+  
+  .image-container img {
+    max-width: 100%;
+    max-height: 100vh; /* Adjust based on your preference */
+    object-fit: cover; /* Ensures the image covers the area nicely */
+  }
+  
+  .register-container {
+    flex: 1; /* Allows the registration form container to take up the remaining space */
+    /* Your existing CSS for .register-container continues below */
+    max-width: 500px; /* Adjust if necessary */
+    margin: 2rem; /* Provides margin around the container */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+input[type="email"], input[type="text"], input[type="date"], input[type="tel"], select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+input[type="email"]:focus, input[type="text"]:focus, input[type="date"]:focus, input[type="tel"]:focus, select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.text-danger {
+    color: #dc3545;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .content-container {
+      flex-direction: column;
+    }
+  
+    .image-container, .register-container {
+      flex: none;
+      max-width: 100%;
+      margin: 1rem 0;
+    }
+  
+    .image-container img {
+      max-height: 50vh; /* Adjust for smaller screens */
+    }
+  }

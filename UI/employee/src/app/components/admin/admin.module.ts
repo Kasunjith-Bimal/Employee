@@ -12,6 +12,7 @@ import { SearchPipe } from 'src/app/pipes/search.pipe';
 import { LoaderComponent } from '../loader/loader.component';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
+
 const routes: Routes = [
   { path: 'admins', component: AdminListComponent },
   { path: 'employees', component: EmployeeListComponent },
@@ -26,9 +27,8 @@ const routes: Routes = [
     EmployeeListComponent,
     EmployeeListItemComponent,
     AdminFormComponent,
-    LoaderComponent,
-    ConfirmationDialogComponent
-
+    ConfirmationDialogComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,

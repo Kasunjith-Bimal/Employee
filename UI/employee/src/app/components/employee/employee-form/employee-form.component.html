@@ -1,1 +1,40 @@
-<p>employee-form works!</p>
+<div class="content-container">
+    <div class="image-container">
+      <img src="assets/images/edit.png" alt="Descriptive Image">
+    </div>
+
+
+<div class="register-container">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" formControlName="fullName" id="fullName">
+        <div *ngIf="employeeForm.get('fullName')?.invalid && (employeeForm.get('fullName')?.dirty || employeeForm.get('fullName')?.touched)">
+          <small class="text-danger">Full name is required</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="telephone">Telephone</label>
+        <input type="tel" formControlName="telephone" id="telephone">
+        <div *ngIf="employeeForm.get('telephone')?.invalid && (employeeForm.get('telephone')?.dirty || employeeForm.get('telephone')?.touched)">
+          <small class="text-danger">Valid telephone number is required</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Addres</label>
+        <input type="tel" formControlName="address" id="address">
+        <div *ngIf="employeeForm.get('address')?.invalid && (employeeForm.get('address')?.dirty || employeeForm.get('address')?.touched)">
+          <small class="text-danger">Addres required</small>
+        </div>
+      </div>
+  
+    
+  
+      <button type="submit" [disabled]="!employeeForm.valid">Update</button>
+    </form>
+  </div>
+
+  </div>

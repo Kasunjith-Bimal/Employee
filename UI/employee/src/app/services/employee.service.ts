@@ -16,12 +16,12 @@ export class EmployeeService {
    }
 
    getEmployeeById(employeeId: string){
-    const url = `${environment.baseUrl}api/Employe/${employeeId}}`;
+    const url = `${environment.baseUrl}api/Employe/${employeeId}`;
     return this.http.get(url);
    }
 
    updateEmployee(Employee:Employee){
-    const url = `${environment.baseUrl}api/Employe/${Employee.id}/edit}`;
+    const url = `${environment.baseUrl}api/Employe/${Employee.id}/edit`;
     return this.http.put(url,Employee);
    }
 }
