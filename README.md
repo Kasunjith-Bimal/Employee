@@ -42,13 +42,25 @@ To set up and update the database:
 },
 ```
 2. **get package manager console for Employee.Infrastructure class library :**
-  1. **Add a Migration:**
+  1. ** Change seed data before Add migration **
+     ``` 
+   Edit EmployeeDbContext.cs class inside data 
+    ```
+   ![Change Seed Data](Document/EmployeeDbContext.png)
+
+   if not change EmployeeDbContext.cs you can log system using 
+   ```
+   Email : kasunysoft@gmail.com
+   Password : KasunJith123@
+   ```
+   
+  2. **Add a Migration:**
    ```
    Add-Migration {{migrationName}}
    ```
    Replace MigrationName with a descriptive name for your migration.
    
-  2. **Update the Database:**
+  3. **Update the Database:**
    ```
    update-database
    ```
@@ -60,6 +72,10 @@ To set up and update the database:
   "Secret": "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM"
   },
 ```
+
+
+
+
 ### Running the Application
 Run Web API application
 
