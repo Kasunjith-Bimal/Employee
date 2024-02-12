@@ -15,12 +15,13 @@ import { AdminListComponent } from './components/admin/admin-list/admin-list.com
 import { AdminListItemComponent } from './components/admin/admin-list/admin-list-item/admin-list-item.component';
 import { EmployeeListComponent } from './components/admin/employee-list/employee-list.component';
 import { EmployeeListItemComponent } from './components/admin/employee-list/employee-list-item/employee-list-item.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './components/navigation/navigation/navigation.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
       closeButton: false,
     }),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

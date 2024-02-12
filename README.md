@@ -1,4 +1,6 @@
 Employee
+## API 
+-----------------------------------------------
 ## Description
 This is Employee Management Software
 project.
@@ -46,6 +48,50 @@ To set up and update the database:
   },
 ```
 ### Running the Application
-Execute the following command in the project directory:
-dotnet run
+
+
+## UI 
+-----------------------------------------------
+
+## Development Setup
+
+
+### Local Development
+
+To contribute to Angular docs, you can setup a local environment with the following commands:
+
+```bash
+# Clone Angular repo
+git clone https://github.com/Kasunjith-Bimal/Employee.git
+
+# Navigate to project directory
+cd Employee
+
+# Install dependencies
+yarn
+
+# Build and run local dev server
+# Note: Initial build will take some time
+yarn docs
+```
+
+### Prerequisites
+
+- Install [Node.js] which includes [Node Package Manager][npm]
+
+### Setting Up a Project
+
+Install the Angular CLI globally:
+
+```
+npm install -g @angular/cli
+```
+
+
+### Run the application:
+
+```
+cd [PROJECT NAME]
+ng serve
+```
 

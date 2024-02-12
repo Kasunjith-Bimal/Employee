@@ -9,6 +9,7 @@ using Employee.Application.Wrappers;
 using Employee.Domain.Dto;
 using Employee.Domain.Entities;
 using MassTransit.Mediator;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,6 +30,7 @@ namespace Employee.API.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllEmployee()
         {
             try
@@ -59,6 +61,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Employee")]
         public async Task<IActionResult> GetEmployeeByid(string id)
         {
             try
@@ -90,6 +93,7 @@ namespace Employee.API.Controllers
 
 
         [HttpPut("{id}/edit")]
+        [Authorize(Roles = "Employee")]
         public async Task<IActionResult> UpdateEmployee(string id, EmployeeUpdate employee)
         {
             try

@@ -5,6 +5,7 @@ using Employee.Application.Command.AuthenticationReleted.Register;
 using Employee.Application.Wrappers;
 using Employee.Domain.Enum;
 using MassTransit.Mediator;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpPost("Register")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RegisterEmployee(RegisterDto register)
         {
             try

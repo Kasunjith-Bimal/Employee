@@ -7,6 +7,7 @@ using Employee.Application.Queries.EmployeeReleted.GetEmployeeById;
 using Employee.Application.Wrappers;
 using Employee.Domain.Entities;
 using MassTransit.Mediator;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,7 +27,9 @@ namespace Employee.API.Controllers
             this.logger = logger;
         }
 
+      
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllAdminEmployee()
         {
             try
@@ -57,6 +60,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetEmployeeByid(string id)
         {
             try
@@ -87,6 +91,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpPut("employee/{id}/edit")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateEmployee(string id, EditDto employee)
         {
             try
@@ -131,6 +136,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpDelete("employee/{id}/delete")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteEmployee(string id)
         {
             try
