@@ -1,13 +1,8 @@
-Employee
-
-
-
+Employee Management System
 
 ## Demo Project Video   
 [![Watch the video](http://img.youtube.com/vi/sTLO9aAVroc/0.jpg)](https://www.youtube.com/watch?v=sTLO9aAVroc)
 
-## API 
------------------------------------------------
 ## Description
 Creating a comprehensive web application for managing employee details and monthly salary payments involves a detailed design and development approach. The application requiring robust backend support from ASP.NET CORE WEB API , user-friendly frontend built with Angular.
 
@@ -19,6 +14,9 @@ The objective is to develop a secure and efficient web application that facilita
 - Profile Updates: Employees can update their profiles with personal details like phone numbers and addresses but cannot change their email, salary, or join date.
 - Admins can toggle the active/inactive status of employee profiles, restricting login access to active employees only.
 - More features...
+
+## API 
+-----------------------------------------------
 ## Getting Started
 ### Prerequisites
 - .NET Core SDK (Version 6.0.0)
