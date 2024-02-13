@@ -1,4 +1,5 @@
 ﻿using Employee.API.Dtos;
+using Employee.API.Filters.Authorization;
 using Employee.Application.Command.AuthenticationReleted.Register;
 using Employee.Application.Command.EmployeeReleted.UpdateEmployeeByAdmin;
 using Employee.Application.Command.EmployeeReleted.UpdateEmployeeByEmployee;
@@ -30,7 +31,7 @@ namespace Employee.API.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize("Admin")]
         public async Task<IActionResult> GetAllEmployee()
         {
             try
@@ -61,7 +62,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Employee")]
+        [CustomAuthorize("Employee")]
         public async Task<IActionResult> GetEmployeeByid(string id)
         {
             try
@@ -93,7 +94,7 @@ namespace Employee.API.Controllers
 
 
         [HttpPut("{id}/edit")]
-        [Authorize(Roles = "Employee")]
+        [CustomAuthorize("Employee")]
         public async Task<IActionResult> UpdateEmployee(string id, EmployeeUpdate employee)
         {
             try

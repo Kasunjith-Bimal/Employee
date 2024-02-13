@@ -1,4 +1,5 @@
 ﻿using Employee.API.Dtos;
+using Employee.API.Filters.Authorization;
 using Employee.Application.Command.EmployeeReleted.DeleteEmployee;
 using Employee.Application.Command.EmployeeReleted.UpdateEmployeeByAdmin;
 using Employee.Application.Queries.EmployeeReleted.GetAllAdmin;
@@ -29,7 +30,7 @@ namespace Employee.API.Controllers
 
       
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize("Admin")]
         public async Task<IActionResult> GetAllAdminEmployee()
         {
             try
@@ -60,7 +61,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize("Admin")]
         public async Task<IActionResult> GetEmployeeByid(string id)
         {
             try
@@ -91,7 +92,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpPut("employee/{id}/edit")]
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize("Admin")]
         public async Task<IActionResult> UpdateEmployee(string id, EditDto employee)
         {
             try
@@ -138,7 +139,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpDelete("employee/{id}/delete")]
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize("Admin")]
         public async Task<ActionResult> DeleteEmployee(string id)
         {
             try

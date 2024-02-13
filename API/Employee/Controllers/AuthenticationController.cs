@@ -1,4 +1,5 @@
 ﻿using Employee.API.Dtos;
+using Employee.API.Filters.Authorization;
 using Employee.Application.Command.AuthenticationReleted.ChangePassword;
 using Employee.Application.Command.AuthenticationReleted.Login;
 using Employee.Application.Command.AuthenticationReleted.Register;
@@ -25,7 +26,7 @@ namespace Employee.API.Controllers
         }
 
         [HttpPost("Register")]
-        [Authorize(Roles = "Admin")]
+        [CustomAuthorize("Admin")]
         public async Task<IActionResult> RegisterEmployee(RegisterDto register)
         {
             try
